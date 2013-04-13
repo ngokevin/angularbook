@@ -1,0 +1,59 @@
+Intended Reader: web developers are interested in AngularJS
+Purpose:
+- quick handbook, get a feel for AngularJS, supplement the documentation
+- get readers to your level of expertise more efficiently than you were able
+  to get there, and preferably in a more interesting way
+- learning book, not reference book
+- refer to docs often to make sure not parroting it
+- don't be completely dry
+
+
+Introduction
+    me
+    why use angularjs
+    comparisons with knockout/ember
+    who is using angularjs
+
+Anatomy of AngularJS
+    client side MVC
+    dependency injection
+    barebones example as overview
+    invoking angular
+    runtime context
+    async code (dom events, settimeout, xhr, libs) outside framework
+    two-way data-binding
+
+Scope
+    variables
+    digest and watch
+    root scope
+
+Templating
+    scope variables
+    event handlers
+    conditionals
+    partials
+
+Controllers
+    dependency injection
+
+Routing
+    views
+    animation
+
+Directives
+    playing card
+    slider
+
+Services
+    Socket.IO
+    pubsub
+
+Testing
+
+REST
+    reddit clone
+    hackernews clone
+
+Resources
+    docs
