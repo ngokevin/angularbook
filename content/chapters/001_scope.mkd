@@ -8,7 +8,7 @@ Angular **scopes** are objects that gives us access to the model. Remember the
 model holds the data and state of an MVC application. Scopes allow us to:
 
 - access and manipulate the model.
-- set event listeners to fire whenever the model changes.
+- set event listeners to watch for whenever the model changes.
 - enlighten Angular about changes to the model brought about by asynchronous
   events.
 - provide context against which expressions are evaluated
@@ -22,6 +22,9 @@ arranged in an heirarchy, and they can prototypically inherit from one another.
 
 ### Example
 
+In *Black and Yellow*, we will create two buttons that toggle the color of a
+circle between two colors, black and yellow.
+
 *examples/blackandyellow/index.html*
 
     ::html
@@ -30,13 +33,10 @@ arranged in an heirarchy, and they can prototypically inherit from one another.
     <button ng-click="color= 'black'">Black</button>
     <button ng-click="color= 'yellow'">Yellow</button>
 
-In *Black and Yellow*, we create two buttons that toggle the color of a circle
-between two colors, black and yellow.
-
-We instantiate the ```color``` attribute on the root scope with the
-```ng-init``` directive. We set the background color of the ```div``` to be
-```color``` with the placeholder. Whenever ```color``` changes, the background
-of the ```div``` will change.
+We instantiate the ```color``` attribute on the root scope with the ```ng-
+init``` directive. We have the ```div``` watch for changes to ```color``` with
+the placeholder. Whenever ```color``` changes, the background of the ```div```
+will change.
 
 To register this behavior with the buttons, we use the ```ng-click``` directive
 which attaches an event handler to the DOM element. For the yellow button, we
@@ -44,3 +44,29 @@ attach the expression, ```color = 'yellow'```, which will set the attribute of
 the scope to be *yellow*.
 
 ![blackandyellow](/img/blackandyellow.png)
+
+## *$watch*ing the Model
+
+Sometimes, we want to observe the model for mutations. The ```scope``` object
+exposes an application programming interface (API), a handful abstracted useful
+functions. Among these functions is ```$watch```, which observes an attribute
+on the scope and runs a callback function whenever that attribute changes.
+
+```$watch``` allows us to do more than just reading and writing attributes on
+the scope. In the callback function, we can run additional logic that
+transcends one-to-one DOM manipulation between the model and the view.
+
+### Example
+
+*examples/motherfathergentleman/index.html*
+
+Our last example was simple enough to warrant not needing controllers, where we
+were able to set up the initial state and behavior with one-line expressions.
+Unfortunately, life is never that simple.
+
+Here, we need to explicitly have a scope object in order to use its
+```$watch``` function. For that, we will need to make use of a **controller**.
+Controllers let us set up the initial state and add behavior to scope objects.
+
+In the controller, we set a ```$watch``` on the scope on ```mother``` and
+```father```.

@@ -69,7 +69,10 @@ structures and variable placeholders, they are also capable of declaring two-
 way data bindings and event handlers. In our next example, we will get our
 first glimpse at some Angular, featuring our Angular template.
 
-### Baby Example
+### Example
+
+In *Baby Example*, we will create two-way data binding using an HTML text input
+element.
 
 *examples/babyexample/index.html*
 
@@ -88,9 +91,6 @@ first glimpse at some Angular, featuring our Angular template.
         </p>
       </body>
     </html>
-
-A toy example of two-way data binding can be presented with an HTML text input
-element.
 
 ```ng-app``` bootstraps the our document to Angular, and we have the input
 binded to a model variable species via the ```ng-model``` **directive**, For
