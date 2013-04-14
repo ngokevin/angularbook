@@ -3,7 +3,7 @@
 
 {% block content %}
   <ol>
-    {% for chapter in site.categories['chapter'] %}
+    {% for chapter in site.categories['chapter'] | sort(attribute='chapter') %}
       <li><a href="/{{ chapter['slug'] }}/">{{ chapter['title'] }}</a></li>
     {% endfor %}
   </ol>

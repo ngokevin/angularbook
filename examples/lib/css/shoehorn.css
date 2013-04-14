@@ -7,3 +7,12 @@ html, body {
 body {
     text-align: center;
 }
+
+img {
+    margin: 0 auto;
+    max-width: 320px;
+}
+
+input[type="checkbox"] {
+    margin: 0 4px;
+}

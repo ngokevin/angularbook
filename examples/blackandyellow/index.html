@@ -1,0 +1,23 @@
+<!doctype html>
+<html ng-app>
+  <head>
+    <script src="../lib/js/angular.min.js"></script>
+    <link rel="stylesheet" href="../lib/css/bootstrap.min.css"></style>
+    <link rel="stylesheet" href="../lib/css/shoehorn.css"></style>
+    <style>
+      div {
+          border: 1px solid gray;
+          border-radius: 75px;
+          margin: 13px auto;
+          height: 100px;
+          width: 100px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Black and Yellow</h1>
+    <div style="background: {{ background }}" ng-init="background = 'white'"></div>
+    <button ng-click="background = 'black'">Black</button>
+    <button ng-click="background = 'yellow'">Yellow</button>
+  </body>
+</html>

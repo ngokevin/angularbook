@@ -1,6 +1,7 @@
 title: Scopes, Targeting the Data Model
 category: chapter
 slug: scopes
+chapter: 001
 
 ---
 
@@ -60,9 +61,48 @@ transcends one-to-one DOM manipulation between the model and the view.
 
 *examples/motherfathergentleman/index.html*
 
+    ::html
+    <body ng-controller="GentlemanCtrl">
+      <h1>Mother-Father Gentleman</h1>
+      <img src="gentleman.png">
+      <input type="checkbox" ng-model="mother">
+      <label>Mother</label>
+      <input type="checkbox" ng-model="father">
+      <label>Father</label>
+    </body>
+
 Our last example was simple enough to warrant not needing controllers, where we
 were able to set up the initial state and behavior with one-line expressions.
 Unfortunately, life is never that simple.
+
+*examples/blackandyellow/app.js*
+
+    ::js
+    function GentlemanCtrl($scope) {
+        var timeout;
+
+        $scope.$watch('mother', function(newVal, oldVal) {
+            if (newVal && $scope.father) {
+                motherfather();
+            } else if (!newVal) {
+                clearTimeout(timeout);
+            }
+        });
+
+        $scope.$watch('father', function(newVal, oldVal) {
+            if (newVal && $scope.mother) {
+                motherfather();
+            } else if (!newVal) {
+                clearTimeout(timeout);
+            }
+        });
+
+        function motherfather() {
+            timeout = setInterval(function() {
+                $('img').toggleClass('show');
+            }, 500);
+        }
+    }
 
 Here, we need to explicitly have a scope object in order to use its
 ```$watch``` function. For that, we will need to make use of a **controller**.
