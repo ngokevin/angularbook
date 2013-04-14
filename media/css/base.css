@@ -2,3 +2,8 @@ html, body {
   -moz-box-shadow: 0 0 1px 1px gainsboro;
   -webkit-box-shadow: 0 0 1px 1px gainsboro;
   box-shadow: 0 0 1px 1px gainsboro; }
+
+img {
+  -moz-box-shadow: 0 0 1px 1px gainsboro;
+  -webkit-box-shadow: 0 0 1px 1px gainsboro;
+  box-shadow: 0 0 1px 1px gainsboro; }

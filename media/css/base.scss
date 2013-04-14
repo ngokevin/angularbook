@@ -4,3 +4,7 @@
 html, body {
     @include def-box-shadow();
 }
+
+img {
+    @include def-box-shadow();
+}
