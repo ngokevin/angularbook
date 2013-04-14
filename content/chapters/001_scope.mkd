@@ -1,0 +1,46 @@
+title: Scopes, Targeting the Data Model
+category: chapter
+slug: scopes
+
+---
+
+Angular **scopes** are objects that gives us access to the model. Remember the
+model holds the data and state of an MVC application. Scopes allow us to:
+
+- access and manipulate the model.
+- set event listeners to fire whenever the model changes.
+- enlighten Angular about changes to the model brought about by asynchronous
+  events.
+- provide context against which expressions are evaluated
+
+## Accessing and Manipulating the Model
+
+Reading and writing to the model with the scope can be as simple as using an
+expression in the template. In that case, we work with the **root scope**. The
+root scope is the parent scope of the application. In Angular, scopes are
+arranged in an heirarchy, and they can prototypically inherit from one another.
+
+### Example
+
+*examples/blackandyellow/index.html*
+
+    ::html
+    <h1>Black and Yellow</h1>
+    <div style="background: {{ color }}" ng-init="color = 'white'"></div>
+    <button ng-click="color= 'black'">Black</button>
+    <button ng-click="color= 'yellow'">Yellow</button>
+
+In *Black and Yellow*, we create two buttons that toggle the color of a circle
+between two colors, black and yellow.
+
+We instantiate the ```color``` attribute on the root scope with the
+```ng-init``` directive. We set the background color of the ```div``` to be
+```color``` with the placeholder. Whenever ```color``` changes, the background
+of the ```div``` will change.
+
+To register this behavior with the buttons, we use the ```ng-click``` directive
+which attaches an event handler to the DOM element. For the yellow button, we
+attach the expression, ```color = 'yellow'```, which will set the attribute of
+the scope to be *yellow*.
+
+![blackandyellow](/img/blackandyellow.png)
