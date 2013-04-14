@@ -1,4 +1,4 @@
-title: AngularJS
+title: AngularJS, Allons-y
 category: chapter
 slug: angular
 
@@ -6,14 +6,14 @@ slug: angular
 
 AngularJS is *model-view-controller* (MVC) client-side Javascript application
 framework that features two-way data binding and enhances HTML to be more
-declarative and expressive. Unfortunately before we dive into some lovely
-hello-worldish code, we need to get a few concepts out of the way.
+declarative, expressive, and dynamic-friendly. Let us get some prerequisite
+concepts out of the way before we dive into hello-worldish code.
 
 ## MVC
 
 MVC is a development pattern (or paradigm, if you will) that revolves around a
 separation of concerns. I will describe MVC and then apply its concepts to
-AngularJS.
+Angular.
 
 - The *model* holds the data and state.
 - The *view* is what the user sees.
@@ -29,17 +29,17 @@ supermodel.
 - The photographer views the supermodel through the camera lens.
 - The photographer directs the supermodel to change poses.
 
-AngularJS's development pattern is MVC. Though in AngularJS jargon, it is
-employed as **scope-template-controller**. Worry not, these concepts will be
+Angular's development pattern is MVC. Though in Angular jargon, it is
+employed as *scope-template-controller*. Worry not, these concepts will be
 explained once you are ready, young padawan. Until these concepts are presented
 properly, we will still refer to MVC components as model-view-controller.
 
 ## Two-Way Data Binding
 
-Remember when I mentioned that the model's state is pushed to the view. You
-should, as it was not too long ago. Well, AngularJS features two-way data
-binding. Not only does the view update whenever the model changes, but changing
-the view also automatically updates back to the model.
+Remember when I mentioned that the model's state is pushed to the view. Well,
+Angular features two-way data binding. Not only does the view update whenever
+the model changes, but changing the view also automatically updates back to the
+model.
 
 This is powerful. It permits us to write less middleman code between the model
 and view. Instead we let the model and view go outside and play with each
@@ -47,23 +47,65 @@ other, no supervision needed. Referring to our earlier analogy, it would be as
 if the photographer struck the same poses in sync with the supermodel.
 
 This saves a lot of trouble by eliminating manual DOM manipulation. I was once
-writing an non-AngularJS web app that had a large, ugly function that synced my
-model with my view. It took the model and ran a big block of jQuery code. The
-block of code would look at the model and update various parts of the page.
-Every time the user interacted with the page, I had to call that expensive
-block of jQuery code. I was displeased by this. Thus, I turned to AngularJS for
-its two-way data binding.
+writing an non-Angular web app. It had an ugly function that synced my model
+with my view via large block of jQuery code. Every time the user interacted
+with the page, I had to call that expensive block of jQuery code to update the
+page. I was displeased by this. Thus, I turned to Angular for its two-way
+data binding.
 
-## Our First Example
+## Client-Side Templating
+
+Though, the two-way data binding does not happen without a little push. We need
+to hook things together from the client-side *template*. Client-side templates
+are usually HTML files that are augmented to be more dynamic. They are often
+sprinkled with traditional control structures such as loops and conditionals.
+And they contain placeholders that represent specified variables.
+
+If you are familiar with server-side web framework templating, it is just that
+but on the client and, in our case, manipulated via Javascript.
+
+Angular templates are a special flavor of templates. Along with control
+structures and variable placeholders, they are also capable of declaring two-
+way data bindings and event handlers. In our next example, we will get our
+first glimpse at some Angular, featuring our Angular template.
+
+## Baby Example
+
+*examples/babyexample/index.html*
 
     ::html
-    <input type="text" ng-model="species">
+    <!doctype html>
+    <html ng-app>
+      <head>
+        <script src="../lib/js/angular.min.js"></script>
+      </head>
+      <body>
+        <h1>Baby Example</h1>
+        <input type="text" ng-model="mySpecies" placeholder="What is your species?">
+        <p>
+          It is a great honor to bask
+          in the presence of a {{ mySpecies || 'human' }}.
+        </p>
+      </body>
+    </html>
 
 A toy example of two-way data binding can be presented with an HTML text input
-element. As a sneak peek, I have included a snippet from the view. We have the
-input binded to a model variable ```species```.  If ```species```'s value is
-"time lord", the input box will read "time lord".
+element.
 
-Say we type "dalek" into the input box.  ```species```'s value in the backend
-will automatically update to "dalek". Since we have ```species``` under two-way
-data binding, no ```onchange``` event handlers are required.
+```ng-app``` bootstraps the our document to Angular, and we have the input
+binded to a model variable species via the ```ng-model``` *directive*,
+
+By default, if ```mySpecies``` is not set, the input will read "human". We
+accomplish this with the Angular expression in the variable placeholder, ```{{
+mySpecies || 'human' }}```.
+
+Say we type "cyberman" into the input box. ```species```'s value in the backend
+will automatically update to "cyberman" as we type. Since we have ```species```
+under two-way data binding, no ```onchange``` event handlers are required.
+
+![babyexample](/img/babyexample.png)
+
+## Up Next
+
+With some concepts on our belt and a sneak peek at Angular in action, we will
+take a deeper gander at the model side of Angular, the scope.
