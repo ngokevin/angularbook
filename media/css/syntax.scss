@@ -5,11 +5,11 @@ $comment: lighten(#757153, 15%);
 
 html body pre {
     @include def-box-shadow();
-    border-radius: 3px;
     background: rgb(80, 82, 82);
+    border-radius: 2px;
     color: $white;
-    padding: 0 1em;
     margin-bottom: 26px;
+    padding: 0 1em;
     overflow: auto;
 
     .hll { background-color: #49483e }

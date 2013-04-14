@@ -1,4 +1,5 @@
 title: AngularJS
+category: chapter
 slug: angular
 
 ---

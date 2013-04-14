@@ -1,0 +1,10 @@
+{% extends "default.html" %}
+
+
+{% block content %}
+  <ol>
+    {% for chapter in site.categories['chapter'] %}
+      <li><a href="/{{ chapter['slug'] }}/">{{ chapter['title'] }}</a></li>
+    {% endfor %}
+  </ol>
+{% endblock %}

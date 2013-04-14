@@ -1,4 +1,5 @@
 title: Barebone AngularJS Example - Magic 8-Ball
+category: chapter
 slug: 8ball
 
 ---
