@@ -1,7 +1,7 @@
 html body pre {
-  -moz-box-shadow: 0 0 1px #505050;
-  -webkit-box-shadow: 0 0 1px #505050;
-  box-shadow: 0 0 1px #505050;
+  -moz-box-shadow: 0 0 1px 1px gainsboro;
+  -webkit-box-shadow: 0 0 1px 1px gainsboro;
+  box-shadow: 0 0 1px 1px gainsboro;
   background: #505252;
   border-radius: 2px;
   color: #fafafa;

@@ -9,7 +9,7 @@ framework that features two-way data binding and enhances HTML to be more
 declarative and expressive. Unfortunately before we dive into some lovely
 hello-worldish code, we need to get a few concepts out of the way.
 
-##MVC
+## MVC
 
 MVC is a development pattern (or paradigm, if you will) that revolves around a
 separation of concerns. I will describe MVC and then apply its concepts to
@@ -34,7 +34,7 @@ employed as **scope-template-controller**. Worry not, these concepts will be
 explained once you are ready, young padawan. Until these concepts are presented
 properly, we will still refer to MVC components as model-view-controller.
 
-##Two-Way Data Binding
+## Two-Way Data Binding
 
 Remember when I mentioned that the model's state is pushed to the view. You
 should, as it was not too long ago. Well, AngularJS features two-way data
@@ -54,7 +54,7 @@ Every time the user interacted with the page, I had to call that expensive
 block of jQuery code. I was displeased by this. Thus, I turned to AngularJS for
 its two-way data binding.
 
-##Our First Example
+## Our First Example
 
     ::html
     <input type="text" ng-model="species">

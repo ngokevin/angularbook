@@ -12,5 +12,5 @@ $white: rgb(250, 250, 250);
 }
 
 @mixin def-box-shadow() {
-    @include box-shadow(0 0 1px $gray);
+    @include box-shadow(0 0 1px 1px $light-gray);
 }
