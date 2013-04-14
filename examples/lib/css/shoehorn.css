@@ -1,0 +1,9 @@
+html, body {
+    background: rgb(250, 250, 250);
+    color: rgb(5, 5, 5);
+    padding: 50px;
+}
+
+body {
+    text-align: center;
+}

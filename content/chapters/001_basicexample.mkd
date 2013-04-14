@@ -1,0 +1,7 @@
+title: Barebone AngularJS Example - Magic 8-Ball
+slug: 8ball
+
+---
+
+To get an idea of what a basic AngularJS application actually looks like, we
+will create a magic 8-ball.

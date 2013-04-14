@@ -1,4 +1,7 @@
-#AngularJS
+title: AngularJS
+slug: angular
+
+---
 
 AngularJS is *model-view-controller* (MVC) client-side Javascript application
 framework that features two-way data binding and enhances HTML to be more
@@ -15,10 +18,11 @@ AngularJS.
 - The *view* is what the user sees.
 - The *controller* manipulates the model.
 
-They connect together. The model powers everything in the background with data.
-Data from the model is pushed to the view. The user's interactions with the
-view are recognized by the controller to update the model. An analogy might
-be a photographer holding a photoshoot with a supermodel.
+They connect together. The model powers everything in the background with its
+data, though is aware of only itself. The view polls the model for its current
+state. Interactions in the view are recognized by the controller to update the
+model. An analogy might be a photographer holding a photoshoot with a
+supermodel.
 
 - The supermodel's pose is the current state.
 - The photographer views the supermodel through the camera lens.
@@ -33,22 +37,23 @@ properly, we will still refer to MVC components as model-view-controller.
 
 Remember when I mentioned that the model's state is pushed to the view. You
 should, as it was not too long ago. Well, AngularJS features two-way data
-binding. Not only does changes to the model update the view, but interactions
-with the view side implicitly update back to the model.
+binding. Not only does the view update whenever the model changes, but changing
+the view also automatically updates back to the model.
 
 This is powerful. It permits us to write less middleman code between the model
 and view. Instead we let the model and view go outside and play with each
 other, no supervision needed. Referring to our earlier analogy, it would be as
 if the photographer struck the same poses in sync with the supermodel.
 
-This saves a lot of trouble. I was once writing an non-AngularJS web app that
-had a large, ugly function that synced my model with my view. It took the
-model and ran a big block of jQuery code. The block of code would look at the
-model and update various parts of the page. Every time the user interacted with
-the page, I had to call that expensive block of jQuery code. I was displeased
-by this. Thus, I turned to AngularJS for its two-way data binding.
+This saves a lot of trouble by eliminating manual DOM manipulation. I was once
+writing an non-AngularJS web app that had a large, ugly function that synced my
+model with my view. It took the model and ran a big block of jQuery code. The
+block of code would look at the model and update various parts of the page.
+Every time the user interacted with the page, I had to call that expensive
+block of jQuery code. I was displeased by this. Thus, I turned to AngularJS for
+its two-way data binding.
 
-###Example
+##Our First Example
 
     ::html
     <input type="text" ng-model="species">
