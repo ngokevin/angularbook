@@ -52,11 +52,12 @@ exposes an application programming interface (API), a handful abstracted useful
 functions. Among these functions is ```$watch```, which observes an attribute
 on the scope and runs a callback function whenever that attribute changes.
 
-```$watch``` allows us to do more than just reading and writing attributes on
-the scope. In the callback function, we can run additional logic that
-transcends one-to-one DOM manipulation between the model and the view.
+Explicitly using ```$watch``` allows us to run additional logic that consists
+of more than simply updating the view. Though in the previous example, a
+```$watch``` was still being implicitly set on ```{{ color }}```. Whenever
+```color``` changed, ```$watch``` automatically updated the DOM.
 
-It is worth noting that Angular prefixes the names of its objects and
+Aside, it is worth noting that Angular prefixes the names of its objects and
 attributes with ```$``` to avoid accidental namespace collisions.
 
 ### Example
@@ -119,13 +120,17 @@ template.
     }
 
 In the controller, we can ask Angular for the ```$scope``` object by asking for
-it as a parameter. We set a ```$watch``` on the scope on ```mother``` and
-```father```. When either attribute changes value, the supplied callback
-function will execute.
+it as a parameter. Angular will then supply the ```$scope``` through
+**dependency injection**. Dependency injection is a method of removing hard-
+coded dependencies and making it possible to change them at run-time or
+compile-time. Angular injection will be discussed at a future point in time.
+
+We set a ```$watch``` on the scope on ```mother``` and ```father```. When
+either attribute changes value, the supplied callback function will execute.
 
 ![gentleman](/img/gentleman.png)
 
-## *$apply**ing Changes from Non-Angular Runtime
+## *$apply*ing Changes from Non-Angular Runtime
 
 Scopes let us notify Angular about model changes that occur outside of Angular.
 Angular splits the browser-event loop into two separate **runtimes**, or
@@ -134,10 +139,70 @@ happen within Angular runtime will propagate to, or update, the view.
 
 Instances of non-Angular runtimes include:
 
-- browser DOM events
-- setTimeout or setInterval
-- asynchronous XMLHttpRequests (XHR or AJAX)
-- third-party libraries such as Socket.IO
+- browser DOM events.
+- setTimeout or setInterval.
+- asynchronous XMLHttpRequests (XHR or AJAX).
+- third-party libraries such as Socket.IO.
 
-When the model changes through these events, we need to call ```$apply``` when
-we want to refresh the data-binding from the model to the view.
+When the model changes through these events, we need to call ```$apply``` if we
+want to refresh the data-binding from the model to the view. Though in most
+cases, ```$apply``` is called for you automatically. Calling ```$apply``` does
+several things on the backend:
+
+- enters Angular runtime.
+- executes a function within that runtime if supplied.
+- calls ```$digest``` which processes the scope's ```$watch``` list
+
+When calling ```$digest```, Angular enters the **digest loop**. ```$digest```
+iterates over ```$watch``` list, which contain watchers that may then change
+the model even further. This would cause ```$digest``` to then be called again.
+This digest loop continues until the model stabilizes, when the ```$watch```
+list no longer detects any changes.
+
+*Depiction of Angular Runtime (docs.angularjs.org)*
+
+![runtime](/img/runtime.png)
+
+### Example
+
+In *HL3 Countdown*, we will create a countdown timer with ```setInterval```
+with Angular to demonstrate ```$apply```.
+
+*examples/hl3countdown/app.js*
+
+    ::js
+    function HL3CountdownCtrl($rootScope, $scope) {
+        $rootScope.countdown = 9999;
+
+        setInterval(function() {
+            $rootScope.$apply(function() {
+                $rootScope.countdown--;
+            });
+        }, 1000);
+    }
+
+For variety, we are using ```$rootScope``` to demonstrate more of dependency
+injection. We ask for ```$rootScope```, Angular will recognize the name and
+supply it to us. Since dependencies are not hard-coded, we can ask for
+dependencies in any particular order.
+
+Since ```$rootScope.countdown--``` takes place within a setInterval, it runs
+outside of Angular runtime. If we were to not use ```$apply```, ```countdown```
+would not be updated to the view, and the countdown would not run. Since we do
+call ```$apply```, the data-binding is effectively refreshed, and the countdown
+runs.
+
+Note we put counter decerementing code within the function passed into
+```$apply```. We could just as well call ```$apply``` on its own to achieve
+the same effect.
+
+    ::js
+    $rootScope.countdown--;
+    $rootScope.$apply();
+
+![hl3countdown](/img/hl3countdown.png)
+
+## Up Next
+
+Scopes cover the *M* in MVC. Next, we will move onto *V* and explore  more
+capabilities of Angular's client-side templates.
