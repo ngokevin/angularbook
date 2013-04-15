@@ -83,10 +83,10 @@ Though this example is slightly more complex; we need to be able to
 conditionally set intervals and clear stored timeouts.
 
 To observe the checkboxes, we want a scope object for its ```$watch```
-function. We will need to make use of a **controller**. Controllers let us set
-up the initial state and add behavior to scope objects. We use the
-```ng-controller``` directive to hook our ```GentlemanCtrl``` controller to the
-template.
+function. We will need to make use of a **controller**. Controllers will be
+discussed in the next chapter, but they let us set up the initial state and add
+behavior to scope objects. We use the ```ng-controller``` directive to hook our
+```GentlemanCtrl``` controller to the template.
 
 *examples/gentleman/app.js*
 
@@ -204,5 +204,7 @@ the same effect.
 
 ## Up Next
 
-Scopes cover the *M* in MVC. Next, we will move onto *V* and explore  more
-capabilities of Angular's client-side templates.
+Scopes cover the *M* in MVC. We will pass over the *V* for now and head
+directly for the *C*, the controllers. We have slowly been getting introduced
+to controllers during this chapter. And now we can naturally delve into the
+meatier portions of Angular.

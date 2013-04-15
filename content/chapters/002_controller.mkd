@@ -1,0 +1,48 @@
+title: Controllers, Serious Business
+category: chapter
+slug: controllers
+chapter: 002
+
+---
+
+Angular controllers are Javascript functions that help up initialize the
+initial state and add behavior to the scope object, as aforementioned. Recall
+controllers in the classic MVC pattern handle the business logic, the glue
+between the controller and the view. Controllers let the view know about
+changes in the model, and the manipulate the model when desired by the view.
+
+### Example
+
+In previous examples, we have been declaring controllers as functions in the
+global scope for code simplicity. It is more correct to create an Angular
+```module``` and use its ```controller``` to register a controller to the view.
+
+*examples/helloworld/app.js*
+
+    ::js
+    var app = anglar.module('helloWorldApp', []);
+
+    app.controller('HelloWorldCtrl', function($scope) {
+        $scope.targetOfSalutation = 'World';
+    });
+
+```module``` is a global place used to create and register Angular modules.
+Though we have not covered them yet, along with controllers, types of Angular
+modules include services, directives, and filters. We register our controller
+by passing in the name of the controller and the controller function with its
+dependencies it wants injected.
+
+To use our module, along with our registered ```HelloWorldCtrl``` controller,
+we must pass the name of our module into the top-level ```ng-app``` directive.
+
+*examples/helloworld/index.js*
+
+    ::html
+    <!doctype html>
+    <html ng-app="helloWorldApp">
+      <body ng-controller="HelloWorldCtrl">
+        <h1>Hello, {{ targetOfSalutation }}</h1>
+      </body>
+    </html>
+
+The rest is just like before, though this time with a greener global namespace.

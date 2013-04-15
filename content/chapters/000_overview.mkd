@@ -18,7 +18,7 @@ Angular.
 
 - The **model** holds the data and state.
 - The **view** is what the user sees.
-- The **controller** manipulates the model.
+- The **controller** is the glue between the model and view.
 
 They connect together. The model powers everything in the background with its
 data, though is aware of only itself. The view polls the model for its current
