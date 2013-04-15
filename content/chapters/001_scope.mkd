@@ -6,13 +6,12 @@ chapter: 001
 ---
 
 Angular **scopes** are objects that gives us access to the model. Remember the
-model holds the data and state of an MVC application. Scopes allow us to:
+model holds the data and state of an MVC application. Besides applying context
+against with expressions are evaluated, scopes allow us to:
 
 - access and manipulate the model.
 - set event listeners to watch for whenever the model changes.
-- enlighten Angular about changes to the model brought about by asynchronous
-  events.
-- provide context against which expressions are evaluated
+- enlighten Angular about asynchronous changes to the model.
 
 ## Accessing and Manipulating the Model
 
@@ -48,7 +47,7 @@ the scope to be *yellow*.
 
 ## *$watch*ing the Model
 
-Sometimes, we want to observe the model for mutations. The ```scope``` object
+Sometimes, we want to observe the model for changes. The ```scope``` object
 exposes an application programming interface (API), a handful abstracted useful
 functions. Among these functions is ```$watch```, which observes an attribute
 on the scope and runs a callback function whenever that attribute changes.
@@ -56,6 +55,9 @@ on the scope and runs a callback function whenever that attribute changes.
 ```$watch``` allows us to do more than just reading and writing attributes on
 the scope. In the callback function, we can run additional logic that
 transcends one-to-one DOM manipulation between the model and the view.
+
+It is worth noting that Angular prefixes the names of its objects and
+attributes with ```$``` to avoid accidental namespace collisions.
 
 ### Example
 
@@ -122,3 +124,20 @@ it as a parameter. We set a ```$watch``` on the scope on ```mother``` and
 function will execute.
 
 ![gentleman](/img/gentleman.png)
+
+## *$apply**ing Changes from Non-Angular Runtime
+
+Scopes let us notify Angular about model changes that occur outside of Angular.
+Angular splits the browser-event loop into two separate **runtimes**, or
+execution contexts, into classical and Angular runtimes. Only operations that
+happen within Angular runtime will propagate to, or update, the view.
+
+Instances of non-Angular runtimes include:
+
+- browser DOM events
+- setTimeout or setInterval
+- asynchronous XMLHttpRequests (XHR or AJAX)
+- third-party libraries such as Socket.IO
+
+When the model changes through these events, we need to call ```$apply``` when
+we want to refresh the data-binding from the model to the view.
