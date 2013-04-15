@@ -59,11 +59,14 @@ transcends one-to-one DOM manipulation between the model and the view.
 
 ### Example
 
-*examples/motherfathergentleman/index.html*
+In *Gentleman*, we want to blink an image when both of two checkboxes are
+checked, but to stop blinking when either of the two checkboxes are unchecked.
+
+*examples/gentleman/index.html*
 
     ::html
     <body ng-controller="GentlemanCtrl">
-      <h1>Mother-Father Gentleman</h1>
+      <h1>Gentleman</h1>
       <img src="gentleman.png">
       <input type="checkbox" ng-model="mother">
       <label>Mother</label>
@@ -72,10 +75,17 @@ transcends one-to-one DOM manipulation between the model and the view.
     </body>
 
 Our last example was simple enough to warrant not needing controllers, where we
-were able to set up the initial state and behavior with one-line expressions.
-Unfortunately, life is never that simple.
+were able to set up the initial state and behavior through expressions alone.
+Though this example is slightly more complex; we need to be able to
+conditionally set intervals and clear stored timeouts.
 
-*examples/blackandyellow/app.js*
+To observe the checkboxes, we want a scope object for its ```$watch```
+function. We will need to make use of a **controller**. Controllers let us set
+up the initial state and add behavior to scope objects. We use the
+```ng-controller``` directive to hook our ```GentlemanCtrl``` controller to the
+template.
+
+*examples/gentleman/app.js*
 
     ::js
     function GentlemanCtrl($scope) {
@@ -83,8 +93,10 @@ Unfortunately, life is never that simple.
 
         $scope.$watch('mother', function(newVal, oldVal) {
             if (newVal && $scope.father) {
+                // 'Mother' and 'Father' checked.
                 motherfather();
             } else if (!newVal) {
+                // 'Mother' unchecked.
                 clearTimeout(timeout);
             }
         });
@@ -104,9 +116,9 @@ Unfortunately, life is never that simple.
         }
     }
 
-Here, we need to explicitly have a scope object in order to use its
-```$watch``` function. For that, we will need to make use of a **controller**.
-Controllers let us set up the initial state and add behavior to scope objects.
+In the controller, we can ask Angular for the ```$scope``` object by asking for
+it as a parameter. We set a ```$watch``` on the scope on ```mother``` and
+```father```. When either attribute changes value, the supplied callback
+function will execute.
 
-In the controller, we set a ```$watch``` on the scope on ```mother``` and
-```father```.
+![gentleman](/img/gentleman.png)
