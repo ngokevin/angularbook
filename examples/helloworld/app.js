@@ -1,5 +1,5 @@
 var app = angular.module('helloWorldApp', []);
 
-app.controller('HelloWorldCtrl', function($scope) {
+app.controller('HelloWorldCtrl', ['$scope', function($scope) {
     $scope.targetOfSalutation = 'World';
-});
+}]);

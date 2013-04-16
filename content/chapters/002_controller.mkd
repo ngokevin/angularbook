@@ -14,8 +14,11 @@ changes in the model, and the manipulate the model when desired by the view.
 ### Example
 
 In previous examples, we have been declaring controllers as functions in the
-global scope for code simplicity. It is more correct to create an Angular
-```module``` and use its ```controller``` to register a controller to the view.
+global scope for code simplicity.
+
+It is more correct to create an Angular ```module``` and use its
+```controller``` factory function to register a controller to the view, to
+not pollute the global namespace.
 
 *examples/helloworld/app.js*
 
@@ -28,12 +31,12 @@ global scope for code simplicity. It is more correct to create an Angular
 
 ```module``` is a global place used to create and register Angular modules.
 Though we have not covered them yet, along with controllers, types of Angular
-modules include services, directives, and filters. We register our controller
-by passing in the name of the controller and the controller function with its
-dependencies it wants injected.
+modules include services, directives, and filters.
 
-To use our module, along with our registered ```HelloWorldCtrl``` controller,
-we must pass the name of our module into the top-level ```ng-app``` directive.
+We pass in the name of the controller along with the controller function with
+its dependencies it wants injected. To use our module, along with our
+registered ```HelloWorldCtrl``` controller, we must pass the name of our module
+into the top-level ```ng-app``` directive.
 
 *examples/helloworld/index.js*
 
@@ -45,4 +48,70 @@ we must pass the name of our module into the top-level ```ng-app``` directive.
       </body>
     </html>
 
-The rest is just like before, though this time with a greener global namespace.
+The rest is just like before, this time with a greener global namespace.
+
+## Dependency Injection
+
+We have already briefly trotted around dependency injection. Dependency
+injection a pattern of passing instance variables into an object rather than
+hard-coding the instance variables from within the object. Big term for a
+rather simple concept.
+
+Dependency injection is beneficial because it provides decoupling of code, thus
+improving testability and maintainability.
+
+### Example
+
+The following two examples demonstrate functions getting a hold of their
+dependencies without dependency injection. These methods hard-code their
+depedencies, making it difficult to stub out or mock the dependency in tests.
+
+*No dependency injection: create the dependency*
+
+    ::js
+    function SomeClass() {
+        this.someDependency = new SomeDependency();
+    }
+
+*No dependency injection: global dependency*
+
+    ::js
+    var someDependency = new SomeDependency();
+    function SomeClass() {
+        this.someDependency = someDependency;
+    }
+
+The next example demonstrates the use of dependency injection. By not hard-
+coding the dependency, we can change them whenever, such as when testing.
+
+*Dependency injection*
+
+    ::js
+    function SomeClass(someDependency) {
+        this.someDependency = someDependency;
+    }
+
+### Dependency Injection in Controllers
+
+Earlier, we properly registered a controller to the view using an Angular
+```module``` and its factory function, ```controller```. There is yet a more
+correct method, involving dependency injection.
+
+Javascript minifiers and obfuscators renames parameters of functions. This
+would disable Angular's ability to infer a controller's dependencies by its
+parameter names.
+
+To get around this, we could either use the ```$inject``` method of
+controllers, or we can use inject dependencies using an inline annotation.
+
+**examples/helloworld/app.js**
+
+    ::js
+    // With better dependency injection.
+    app.controller('HelloWorldCtrl', ['$scope', function($scope) {
+        $scope.targetOfSalutation = 'World';
+    }]);
+
+In a list, we pass the names of the dependencies we want as strings. As the
+last element of that list, we pass the controller constructor with its
+dependencies as its parameters, *in the same order as the strings*.

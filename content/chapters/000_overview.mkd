@@ -38,9 +38,9 @@ properly, we will still refer to MVC components as model-view-controller.
 ## Two-Way Data Binding
 
 Remember when I mentioned that the model's state is pushed to the view. Well,
-Angular features two-way data binding. Not only does the view update whenever
-the model changes, but changing the view also automatically updates back to the
-model.
+Angular features **two-way data binding**. Not only does the view update
+whenever the model changes, but changes to the view automatically updates
+back to the model.
 
 This is powerful. It permits us to write less middleman code between the model
 and view. Instead we let the model and view go outside and play with each
