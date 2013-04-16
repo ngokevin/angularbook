@@ -5,11 +5,18 @@ chapter: 002
 
 ---
 
-Angular controllers are Javascript functions that help up initialize the
-initial state and add behavior to the scope object, as aforementioned. Recall
-controllers in the classic MVC pattern handle the business logic, the glue
-between the controller and the view. Controllers let the view know about
-changes in the model, and the manipulate the model when desired by the view.
+Angular controllers help us initialize the initial state and add behavior to
+scope objects. Recall that controllers, in the classic MVC pattern, handle the
+business logic. They are the glue between the controller and the view.
+Controllers tell the view about changes to the model and manipulate the model
+when asked by from the view.
+
+In the previous chapter, we had briefly introduced controllers by necessity.
+Controllers are intertwined with scopes in the sense that controllers
+
+- use scopes to expose their methods to the template to use in expressions.
+- define methods that can modify properties on the scope.
+- can register ```$watches``` on the model.
 
 ### Example
 

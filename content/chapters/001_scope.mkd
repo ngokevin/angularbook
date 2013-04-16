@@ -7,19 +7,23 @@ chapter: 001
 
 Angular **scopes** are objects that gives us access to the model. Remember the
 model holds the data and state of an MVC application. Besides applying context
-against with expressions are evaluated, scopes allow us to:
+against which expressions are evaluated, scopes allow us to:
 
 - access and manipulate the model.
 - set event listeners to watch for whenever the model changes.
 - enlighten Angular about asynchronous changes to the model.
 
-## Accessing and Manipulating the Model
+Each Angular application has exactly one **root scope**, which can have child
+scopes that inherit from it.
 
-Assigning a property to the scope creates or updates the model. In simple
-cases, manipulating the model with the scope can be done in the template. For
-the next example, we will work with the **root scope** for simplicity. The root
-scope is the global, parent scope of the application. In Angular, scopes are
-arranged in an heirarchy, and they can prototypically inherit from one another.
+    ::js
+    $rootScope.color = 'black';
+    childScope = $rootScope.$new();  // Child scope's color is 'black'.
+    childScope.color = 'yellow';  // Child scope's color is 'yellow'.
+
+We can assign properties to the scope to update the model, as seen above.
+Though, we can implicitly use the scope from the template to manipulate the
+model. For now, we will be working with the root scope for simplicity.
 
 ### Example
 
@@ -82,12 +86,19 @@ This example is slightly more complex; we need to be able to conditionally set
 intervals and clear stored timeouts. This is difficult to do with Angular
 expressions alone in the template.
 
-We want a scope object for its ```$watch``` function to observe the checkboxes.
-We will need to make use of a **controller**. Controllers allow us set up the
-initial state and add behavior to scope objects.
+Thus, we will be making use of a **controller**. Controllers allow us set up
+the initial state and add behavior to scope objects, from the Javascript side.
+The controller will give us a scope object. We can then use its ```$watch```
+function to observe the checkboxes.
 
-A scope is implicitly created when we use the ```ng-controller``` directive.
-The directive also associates our ```GentlemanCtrl``` with that scope.
+A child scope of the root scope is created under the ```ng-controller```
+directive. As we see, this is one way to create child scopes. We have also been
+creating the root scope in the template as well. The ```ng-app``` directive we
+have been using to bootstrap our Angular applications has been creating the
+root scope.
+
+We pass in the name of our controller, ```GentlemanCtrl``` to associate it with
+our  new scope.
 
 *examples/gentleman/app.js*
 
@@ -126,8 +137,8 @@ it as a parameter. Angular will then supply the ```$scope``` through
 coded dependencies and making it possible to change them at run-time or
 compile-time.
 
-There are better ways of creating controllers that does not involve polluting
-the global namespace and with a better pattern of dependency injection, both of
+There are better ways of creating controllers that uses a better pattern of
+dependency injection and does not involve polluting the global namespace, ways
 which will be discussed in the next chapter.
 
 We set a ```$watch``` on the scope on ```mother``` and ```father```. When
