@@ -208,13 +208,15 @@ would not be updated to the view, and the countdown would not run. Since we do
 call ```$apply```, the data-binding is effectively refreshed, and the countdown
 runs.
 
-Note we put counter decerementing code within the function passed into
+Note we put counter-decrementing code within the function passed into
 ```$apply```. We could just as well call ```$apply``` on its own to achieve
 the same effect.
 
     ::js
     $rootScope.countdown--;
     $rootScope.$apply();
+
+And the result.
 
 ![hl3countdown](/img/hl3countdown.png)
 
