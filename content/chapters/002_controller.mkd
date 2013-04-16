@@ -34,9 +34,12 @@ Though we have not covered them yet, along with controllers, types of Angular
 modules include services, directives, and filters.
 
 We pass in the name of the controller along with the controller function with
-its dependencies it wants injected. To use our module, along with our
-registered ```HelloWorldCtrl``` controller, we must pass the name of our module
-into the top-level ```ng-app``` directive.
+its dependencies it wants injected.
+
+To use our module, along with our registered ```HelloWorldCtrl``` controller,
+we must pass the name of our module into the top-level ```ng-app``` directive.
+Again, we use the ```ng- controller``` directive to create the scope and
+associate our controller.
 
 *examples/helloworld/index.js*
 
@@ -99,19 +102,24 @@ correct method, involving dependency injection.
 
 Javascript minifiers and obfuscators renames parameters of functions. This
 would disable Angular's ability to infer a controller's dependencies by its
-parameter names.
-
-To get around this, we could either use the ```$inject``` method of
-controllers, or we can use inject dependencies using an inline annotation.
+parameter names. To get around this, we could either use the ```$inject```
+method of controllers, or we can inject dependencies using an inline
+annotation.
 
 **examples/helloworld/app.js**
 
     ::js
     // With better dependency injection.
-    app.controller('HelloWorldCtrl', ['$scope', function($scope) {
-        $scope.targetOfSalutation = 'World';
+    app.controller('HelloWorldCtrl', ['$scope', function(scope) {
+        scope.targetOfSalutation = 'World';
     }]);
 
-In a list, we pass the names of the dependencies we want as strings. As the
-last element of that list, we pass the controller constructor with its
-dependencies as its parameters, *in the same order as the strings*.
+In an array , we pass the names of the dependencies we want as strings. We then
+pass the controller constructor with its dependencies as its parameters in the
+same order. Note we can name the function parameters what we want as long as
+they are in the same order as we injected them.
+
+As well as controllers, dependency injection can be used in the other Angular
+factory methods for creating services, filters, and directives.
+
+## Controller Inheritance

@@ -15,9 +15,10 @@ against with expressions are evaluated, scopes allow us to:
 
 ## Accessing and Manipulating the Model
 
-Reading and writing to the model with the scope can be as simple as using an
-expression in the template. In that case, we work with the **root scope**. The
-root scope is the parent scope of the application. In Angular, scopes are
+Assigning a property to the scope creates or updates the model. In simple
+cases, manipulating the model with the scope can be done in the template. For
+the next example, we will work with the **root scope** for simplicity. The root
+scope is the global, parent scope of the application. In Angular, scopes are
 arranged in an heirarchy, and they can prototypically inherit from one another.
 
 ### Example
@@ -77,16 +78,16 @@ checked, but to stop blinking when either of the two checkboxes are unchecked.
       <label>Father</label>
     </body>
 
-Our last example was simple enough to warrant not needing controllers, where we
-were able to set up the initial state and behavior through expressions alone.
-Though this example is slightly more complex; we need to be able to
-conditionally set intervals and clear stored timeouts.
+This example is slightly more complex; we need to be able to conditionally set
+intervals and clear stored timeouts. This is difficult to do with Angular
+expressions alone in the template.
 
-To observe the checkboxes, we want a scope object for its ```$watch```
-function. We will need to make use of a **controller**. Controllers will be
-discussed in the next chapter, but they let us set up the initial state and add
-behavior to scope objects. We use the ```ng-controller``` directive to hook our
-```GentlemanCtrl``` controller to the template.
+We want a scope object for its ```$watch``` function to observe the checkboxes.
+We will need to make use of a **controller**. Controllers allow us set up the
+initial state and add behavior to scope objects.
+
+A scope is implicitly created when we use the ```ng-controller``` directive.
+The directive also associates our ```GentlemanCtrl``` with that scope.
 
 *examples/gentleman/app.js*
 
@@ -123,7 +124,11 @@ In the controller, we can ask Angular for the ```$scope``` object by asking for
 it as a parameter. Angular will then supply the ```$scope``` through
 **dependency injection**. Dependency injection is a method of removing hard-
 coded dependencies and making it possible to change them at run-time or
-compile-time. Angular injection will be discussed at a future point in time.
+compile-time.
+
+There are better ways of creating controllers that does not involve polluting
+the global namespace and with a better pattern of dependency injection, both of
+which will be discussed in the next chapter.
 
 We set a ```$watch``` on the scope on ```mother``` and ```father```. When
 either attribute changes value, the supplied callback function will execute.
