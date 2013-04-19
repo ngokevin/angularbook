@@ -143,10 +143,11 @@ controller with the ```ng-controller``` directive.
 ### Example
 
 In *No Church in the Wild*, we will demonstrate controller inheritance on
-Kayne's eloquent bars, *"What's a mob to a king? What's a king to a god?
-What's a god to a non-believer?"*
+Kayne's eloquent bar, *"What's a mob to a king? What's a king to a god? What's
+a god to a non-believer?"*. We will create a heirarchy of controllers to
+represent a heirarchy of this little figurative food chain.
 
-**examples/nochurchinthewild/index.html**
+*examples/nochurchinthewild/index.html*
 
     ::html
     <body ng-init="alpha = 'Kevin'">
@@ -159,3 +160,26 @@ What's a god to a non-believer?"*
             {{ alpha }}
             <div ng-controller="MobCtrl">
               {{ alpha }}
+
+The ```body``` element encompasses the root scope. For each ```ng-
+controller```, another child controller is added to the heirarchy. The root
+scope's value for ```alpha``` is initialized to *Kevin*.
+
+When the ```NonBelieverCtrl``` child controller is created, a new scope is
+created that inherits from the root scope, therefore inheriting ```alpha```'s
+value of *Kevin*. But in the ```NonBelieverCtrl``` controller, we will override
+that initial value.
+
+*examples/nochurchinthewild/app.js*
+
+    ::js
+    app.controller('NonBelieverCtrl', ['$scope', function($scope) {
+        $scope.alpha = 'Non-Believer';
+    }]);
+
+We can then continue going down the chain, overriding *Non-Believer* with
+*God*, overriding *God* with *King*, and finally overriding *King* with *Mob*.
+
+![nochurchinthewild](/img/nochurchinthewild.png)
+
+## Up Next
