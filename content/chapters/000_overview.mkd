@@ -67,8 +67,8 @@ but on the client and, in our case, manipulated via Javascript.
 
 Angular templates are a special flavor of templates. Along with control
 structures and variable placeholders, they are also capable of declaring two-
-way data bindings and event handlers. In our next example, we will get our
-first glimpse at some Angular, featuring our Angular template.
+way data bindings and event handlers. In our next example *Baby Example*, we
+will get our first glimpse at some Angular, featuring our Angular template.
 
 ### Example
 

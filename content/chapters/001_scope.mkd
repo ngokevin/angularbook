@@ -58,9 +58,10 @@ functions. Among these functions is ```$watch```, which observes an attribute
 on the scope and runs a callback function whenever that attribute changes.
 
 Explicitly using ```$watch``` allows us to run additional logic that consists
-of more than simply updating the view. Though in the previous example, a
-```$watch``` was still being implicitly set on ```{{ color }}```. Whenever
-```color``` changed, ```$watch``` automatically updated the DOM.
+of more than simply updating the view. Though in the previous example *Black
+and Yellow*, a ```$watch``` was still being implicitly set on ```{{ color
+}}```. Whenever ```color``` changed, ```$watch``` automatically updated the
+DOM.
 
 Aside, it is worth noting that Angular prefixes the names of its objects and
 attributes with ```$``` to avoid accidental namespace collisions.
@@ -139,7 +140,7 @@ compile-time.
 
 There are better ways of creating controllers that uses a better pattern of
 dependency injection and does not involve polluting the global namespace, ways
-which will be discussed in the next chapter.
+which will be discussed in *Controllers, Serious Business*,
 
 We set a ```$watch``` on the scope on ```mother``` and ```father```. When
 either attribute changes value, the supplied callback function will execute.
