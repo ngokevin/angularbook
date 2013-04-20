@@ -1,4 +1,4 @@
-var app = angular.module('noChurchInTheWildApp', []);
+var app = angular.module('NoChurchInTheWildApp', []);
 
 
 app.controller('NonBelieverCtrl', ['$scope', function($scope) {

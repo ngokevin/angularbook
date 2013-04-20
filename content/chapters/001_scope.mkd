@@ -46,7 +46,7 @@ will change.
 To register this behavior with the buttons, we use the ```ng-click``` directive
 which attaches an event handler to the DOM element. For the yellow button, we
 attach the expression, ```color = 'yellow'```, which will set the attribute of
-the scope to be *yellow*.
+the scope to be "yellow".
 
 ![blackandyellow](/img/blackandyellow.png)
 
@@ -99,7 +99,7 @@ have been using to bootstrap our Angular applications has been creating the
 root scope.
 
 We pass in the name of our controller, ```GentlemanCtrl``` to associate it with
-our  new scope.
+our new scope.
 
 *examples/gentleman/app.js*
 

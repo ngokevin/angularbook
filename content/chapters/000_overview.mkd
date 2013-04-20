@@ -104,8 +104,8 @@ accomplish this with the Angular **expression** in the variable placeholder,
 ```{{ mySpecies || 'human' }}```. An expression is just a line of code that
 Angular can evaluate in the template.
 
-Say we type *cyberman* into the input box. ```species```'s value in the
-backend will automatically update to *cyberman* as we type. Since we have
+Say we type "cyberman" into the input box. ```species```'s value in the
+backend will automatically update to "cyberman" as we type. Since we have
 ```species``` under two-way data binding, no ```onchange``` event handlers are
 required.
 
