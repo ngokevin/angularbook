@@ -28,7 +28,8 @@ model. For now, we will be working with the root scope for simplicity.
 ### Example
 
 In *Black and Yellow*, we will create two buttons that toggle the color of a
-circle between two colors, black and yellow.
+circle between two colors, black and yellow, to demonstrate basic use of the
+scope.
 
 *examples/blackandyellow/index.html*
 
@@ -68,8 +69,9 @@ attributes with ```$``` to avoid accidental namespace collisions.
 
 ### Example
 
-In *Gentleman*, we want to blink an image when both of two checkboxes are
-checked, but to stop blinking when either of the two checkboxes are unchecked.
+In *Gentleman*, we will blink an image when both of two checkboxes are checked,
+but to stop blinking when either of the two checkboxes are unchecked, to
+demonstrate ```$watch```.
 
 *examples/gentleman/index.html*
 
@@ -183,7 +185,7 @@ list no longer detects any changes.
 ### Example
 
 In *HL3 Countdown*, we will create a countdown timer with ```setInterval```
-with Angular to demonstrate ```$apply```.
+alongside Angular to demonstrate ```$apply```.
 
 *examples/hl3countdown/app.js*
 

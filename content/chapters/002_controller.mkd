@@ -21,8 +21,8 @@ that controllers
 
 ### Example
 
-In *Hello World*, we will no longer be declaring controllers as functions in
-the global scope for the sake of code simplicity.
+In *Hello World*, we will print "Hello, world" to demonstrate a more correct
+declaration of controllers that do not reside in the global JS scope.
 
 Rather, it is more correct to create an Angular ```module``` and use its
 ```controller``` factory function to register a controller to the view, to not
@@ -92,7 +92,7 @@ depedencies, making it difficult to stub out or mock the dependency in tests.
         this.someDependency = someDependency;
     }
 
-By not hard-coding the dependency, we can change them whenever, such as when
+By not hard-coding the dependency, we can change them whenever, such as during
 testing.
 
 *Dependency injection*
@@ -114,6 +114,11 @@ parameter names. To get around this, we could either use the ```$inject```
 method of controllers, or we can inject dependencies using an inline
 annotation.
 
+### Example
+
+In *Hello World*, we will again print "Hello, World" using a different method
+to demonstrate declaring controllers with proper dependency injection.
+
 *examples/helloworld/app.js*
 
     ::js
@@ -132,19 +137,16 @@ factory methods for creating services, filters, and directives.
 
 ## Methods in the Controller
 
-Angular expressions in the template contain limited logic. They can do some
-math and modify the scope. For decoupling of concerns as specified by the MVC
-pattern, this purposely limits the power of the template, and delegates it to
-the controller. For instance, we cannot use Javascript standard library
-functions in expressions.
-
-Set a method on the scope from within a controller, and we can call the method
-from the template in an expression.
+We can set a method on the scope from within a controller and can call the
+method from the template in an expression. It is better practice to place
+presentational behavior in the controller, as to please MVC's separation of
+concerns. Defining behavior in the view would not only be incorrect but would
+also be more difficult as Angular expressions are inherently limited.
 
 ### Example
 
 In *Jack in the Box*, we will create a button that, on a random click, pop goes
-the weasel.
+the weasel, to demonstrate using methods in the controller.
 
 *examples/jackinthebox/app.js*
 
@@ -188,10 +190,9 @@ controller with the ```ng-controller``` directive.
 
 ### Example
 
-In *No Church in the Wild*, we will demonstrate controller inheritance on Kanye
-West's bar, "What's a mob to a king? What's a king to a god? What's a god to a
-non-believer?" We will create a heirarchy of controllers to represent a
-heirarchy of this little food chain.
+In *No Church in the Wild*, we will use Kanye West's bar, "What's a mob to a
+king? What's a king to a god? What's a god to a non-believer?" to create a a
+little food chain heirarchy.
 
 *examples/nochurchinthewild/index.html*
 

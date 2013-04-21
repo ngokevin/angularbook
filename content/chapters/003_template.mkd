@@ -17,7 +17,7 @@ more closely binded with the model.
 
 Angular seasons several different types of spices on top of standard HTML.
 
-- **Expressions** are evaluated Javascript-like code snippets placed in
+- **Expressions** are evaluated JS-like code snippets placed in
   bindings.
 - **Directives** augment existing DOM elements or represent a reusable
   component.
@@ -26,6 +26,42 @@ Angular seasons several different types of spices on top of standard HTML.
 - **Filters** format or prettify data for display.
 
 ## Angular Expressions
+
+Angular expressions are like inline JS snippets in the template,
+though, following MVC, they are purposely limited in power. They are often
+placed in bindings in the form of ```{{ expression }} ``` or in quotes for some
+directives.
+
+In previous chapters, we have already been using expressions to evaluate
+properties against scopes and to specify event handlers. They can also evaluate
+simple mathematical and logical expressions. Example expressions might be
+
+- 1 + 1 * 42
+- someScopeAttr
+- someScopeAttr || someOtherScopeAttr
+- someScopeMethod()
+
+Expressions can also be separated by semicolons. A case where this would be
+useful would be within the ```ng-init``` directive, where we could initialize
+multiple properties on the scope.
+
+### Angular Expressions vs. Javascript Expressions
+
+Angular expressions are not simply ```eval()```ed JS expressions. Angular
+expressions are like a subset of JS expressions. There are several notable
+distinctions between the two.
+
+- Angular evaluates attributes against the scope, whereas JS would evaluate
+  against the global ```window```
+- Angular errors and exceptions evaluate to ```undefined``` or ```null```,
+  whereas JS would throw an exception.
+- Angular contains no control flow constructs such as conditionals or loops,
+  though conditionals can sometimes be mimicked using ternary operators.
+
+### Example
+
+In *NBA Mad Libs*, we will write a poem involving memes about NBA basketball
+players, to demonstrate Angular expressions.
 
 ## Directives
 

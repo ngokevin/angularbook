@@ -6,7 +6,7 @@ chapter: 000
 ---
 
 AngularJS, or Angular, is a **model-view-controller** (MVC) client-side
-Javascript application framework that features two-way data binding and
+Javascript (JS) application framework that features two-way data binding and
 enhances HTML to be more declarative, expressive, and dynamic-friendly. Let us
 get some prerequisite concepts out of the way before we dive into hello-
 worldish code.
@@ -65,7 +65,7 @@ are often sprinkled with traditional control structures such as loops and
 conditionals. And they contain placeholders that represent specified variables.
 
 If you are familiar with server-side web framework templating, it is just that
-but on the client and, in our case, manipulated via Javascript.
+but on the client and, in our case, manipulated via JS.
 
 Angular templates are a special flavor of templates. Along with control
 structures and variable placeholders, they are also capable of declaring two-
@@ -74,8 +74,8 @@ will get our first glimpse at some Angular, featuring our Angular template.
 
 ### Example
 
-In *Baby Example*, we will create two-way data binding using an HTML text input
-element.
+In *Baby Example*, we will sync an HTML text input element with a ```p```
+element to demonstrate two-way data binding.
 
 *examples/babyexample/index.html*
 
