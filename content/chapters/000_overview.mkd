@@ -5,10 +5,11 @@ chapter: 000
 
 ---
 
-AngularJS is **model-view-controller** (MVC) client-side Javascript application
-framework that features two-way data binding and enhances HTML to be more
-declarative, expressive, and dynamic-friendly. Let us get some prerequisite
-concepts out of the way before we dive into hello-worldish code.
+AngularJS, or Angular, is a **model-view-controller** (MVC) client-side
+Javascript application framework that features two-way data binding and
+enhances HTML to be more declarative, expressive, and dynamic-friendly. Let us
+get some prerequisite concepts out of the way before we dive into hello-
+worldish code.
 
 ## MVC
 
@@ -30,10 +31,11 @@ supermodel.
 - The photographer views the supermodel through the camera lens.
 - The photographer directs the supermodel to change poses.
 
-Angular's development pattern is MVC. Though in Angular jargon, it is employed
-more like scope-template-controller. Worry not, these concepts will be
-explained once you are ready, young padawan. Until these concepts are presented
-properly, we will still refer to MVC components as model-view-controller.
+Angular's development pattern is MVC, and Angular strictly adheres to this
+separation of concerns. Though in Angular jargon, it is employed more like
+scope-template-controller. Worry not, these concepts will be explained once you
+are ready, young padawan. Until these concepts are presented properly, we will
+still refer to MVC components as model-view-controller.
 
 ## Two-Way Data Binding
 

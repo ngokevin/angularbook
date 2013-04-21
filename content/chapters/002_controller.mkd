@@ -171,7 +171,8 @@ something we would not be able to do from the template.
     </body>
 
 Then we can call it from the template by passing it to the ```ng-click```
-directive. We could even pass parameters to the function if we desired.
+directive, with parenthesis to indicate a function. We could even pass
+parameters to the function if we desired.
 
 ![jackinthebox](/img/jackinthebox.png)
 

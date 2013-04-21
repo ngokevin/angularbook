@@ -1,0 +1,41 @@
+title: Templates, Window to the Soul
+category: chapter
+slug: templates
+chapter: 003
+
+---
+
+Angular **templates** are an enhanced specification of HTML that, along with
+information from the model, becomes the rendered view that the user sees in the
+browser. Recall that the view, in the MVC pattern, generates the output
+representation while requesting information from the model.
+
+The templates were designed, through the use of directives, to be more
+declarative for specifying UI. They are the standard, static DOM sprinkled with
+various Angular elements that add behavior to make the view more dynamic and
+more closely binded with the model.
+
+Angular seasons several different types of spices on top of standard HTML.
+
+- **Expressions** are evaluated Javascript-like code snippets placed in
+  bindings.
+- **Directives** augment existing DOM elements or represent a reusable
+  component.
+- **Form controls** allow the user to input and allow the application to
+  validate data.
+- **Filters** format or prettify data for display.
+
+## Angular Expressions
+
+## Directives
+
+Directives teach HTML new tricks and allows us to create reusable widgets.  We
+will cover how to create custom directives in *Directives, Teaching an Old HTML
+New Tricks*. In previous chapters, we have already been using basic built-in
+Angular directives such as ```ng-app```, ```ng-controller```, or ```ng-
+click```.
+
+We will cover only a few out-of-the-box directives that are representative of
+different types of directives, by purpose. The official Angular documentation
+contains an API reference detailing all of the directives, totaling 50 or so at
+time of writing.
