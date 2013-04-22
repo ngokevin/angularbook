@@ -8,7 +8,7 @@ chapter: 003
 Angular **templates** are an enhanced specification of HTML that, along with
 information from the model, becomes the rendered view that the user sees in the
 browser. Recall that the view, in the MVC pattern, generates the output
-representation while requesting information from the model.
+representation with assistance from the model.
 
 The templates were designed, through the use of directives, to be more
 declarative for specifying UI. They are the standard, static DOM sprinkled with
@@ -60,8 +60,60 @@ distinctions between the two.
 
 ### Example
 
-In *NBA Mad Libs*, we will write a poem involving memes about NBA basketball
-players, to demonstrate Angular expressions.
+In *An NBA Poem*, we will write a poem involving some basketball memes to
+demonstrate Angular expressions.
+
+*examples/annbapoem/index.html*
+
+    ::html
+    <body ng-init="theDeludedOne = 'monta'; lebronRings = 0; bromance = true;">
+
+    Not {{ lebronRings + 1 }}. Not {{ lebronRings + 2 }}. Not {{ lebronRings + 3 }}.
+
+    Because {{ theDeludedOne }} have it all.
+
+    {{ chris || 'Cliff' }} and {{ cliff || 'Chris' }} Paul, hoping for the championship.
+
+    While {{ bromance && 'Parsons' || 'Basketball' }} and Lin, a most delicate relationship.
+
+With the scope property ```lebronRings``` initialized to "0", we can perform
+simple addition such as in ```{{ lebronRings + 1 }}}``` to yield "1".
+
+Or we can simply output properties, as is, as a string. Such is the case where
+```{{ theDeludedOne }}``` evaluates to "monta".
+
+Because expressions are forgiving, even though  ```chris``` has not been
+defined, ```{{ chris || 'Cliff' }}``` still evaluates to "Cliff". Attempting to
+evaluate this expression in JS would raise a "ReferenceError: chris is not
+defined", on the other hand.
+
+The expression ```{{ chris || 'Cliff' }}``` also demonstrates the use of
+boolean logic to accomplish a simple conditional without any control flow
+constructs. It evaluates ```chris``` if it exists, else it evalutes to "Cliff".
+
+#### Ternary Operations in Expressions
+
+Often in templates, an ```if then else``` kind of evaluation is useful. Angular
+expressions do not contain any control flow constructs, however. Traditionally
+in JS, we could use an ```if then else``` flow.
+
+    ::js
+    if (a) {
+        return b;
+    } else {
+        return c;
+    }
+
+JS contains the ternary operator, to make it more succinct
+
+    ::js
+    return a ? b : c;
+
+Angular expressions do not contain the ternary operator. Equivalently, we can
+use boolean logic to achieve the same control. In *An NBA Poem*, the expression
+```{{ bromance && 'Parsons' || 'Basketball }}``` demonstrates an
+```if then else``` evaluation. If ```bromance``` is not falsy, then the
+expression evaluates to "Parsons", else it evaluates to "Basketball".
 
 ## Directives
 

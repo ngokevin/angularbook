@@ -1,0 +1,33 @@
+<!doctype html>
+<html ng-app>
+  <head>
+    <title>An NBA Poem</title>
+    <script src="../lib/js/angular.min.js"></script>
+    <script src="app.js"></script>
+    <link rel="stylesheet" href="../lib/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../lib/css/shoehorn.css">
+    <style>
+      span {
+          font-weight: bold;
+          text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body ng-init="theDeludedOne = 'monta'; lebronRings = 0; bromance = true;">
+    <h1>An NBA Poem</h1>
+    <p>
+      Not <span>{{ lebronRings + 1 }}</span>.
+      Not <span>{{ lebronRings + 2 }}</span>.
+      Not <span>{{ lebronRings + 3 }}</span>.
+    </p>
+    <p>Because <span>{{ theDeludedOne }}</span> have it all.</p>
+    <p>
+      <span>{{ chris || 'Cliff' }}</span> and
+      <span>{{ cliff || 'Chris' }}</span> Paul, hoping for the championship.
+    </p>
+    <p>
+      While <span>{{ bromance && 'Parsons' || 'Basketball' }}</span> and Lin,
+      a most delicate relationship.
+    </p>
+  </body>
+</html>
