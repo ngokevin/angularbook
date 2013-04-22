@@ -49,6 +49,7 @@ Routing
 Directives
     playing card
     slider
+    ng-tap
 
 Services
     Socket.IO

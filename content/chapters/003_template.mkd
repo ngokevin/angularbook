@@ -15,15 +15,15 @@ declarative for specifying UI. They are the standard, static DOM sprinkled with
 various Angular elements that add behavior to make the view more dynamic and
 more closely binded with the model.
 
-Angular seasons several different types of spices on top of standard HTML.
+Angular seasons several different types of spices on top of standard HTML,
 
-- **Expressions** are evaluated JS-like code snippets placed in
+- **expressions** that are evaluated JS-like code snippets placed in
   bindings.
-- **Directives** augment existing DOM elements or represent a reusable
+- directives that augment existing DOM elements or represent a reusable
   component.
-- **Form controls** allow the user to input and allow the application to
+- form controls that allow the user to input and allow the application to
   validate data.
-- **Filters** format or prettify data for display.
+- **filters** that format or prettify data for display.
 
 ## Angular Expressions
 
@@ -49,14 +49,13 @@ multiple properties on the scope.
 
 Angular expressions are not simply ```eval()```ed JS expressions. Angular
 expressions are like a subset of JS expressions. There are several notable
-distinctions between the two.
+distinctions between the two. Angular
 
-- Angular evaluates attributes against the scope, whereas JS would evaluate
-  against the global ```window```
-- Angular errors and exceptions evaluate to ```undefined``` or ```null```,
+- evaluates attributes against the scope, whereas JS would evaluate
+  against the global ```window```.
+- resolves errors and exceptions to ```undefined``` or ```null```,
   whereas JS would throw an exception.
-- Angular contains no control flow constructs such as conditionals or loops,
-  though conditionals can sometimes be mimicked using ternary operators.
+- contains no control flow constructs such as conditionals or loops.
 
 ### Example
 
@@ -67,7 +66,6 @@ demonstrate Angular expressions.
 
     ::html
     <body ng-init="theDeludedOne = 'monta'; lebronRings = 0; bromance = true;">
-
     Not {{ lebronRings + 1 }}. Not {{ lebronRings + 2 }}. Not {{ lebronRings + 3 }}.
 
     Because {{ theDeludedOne }} have it all.
@@ -115,15 +113,32 @@ use boolean logic to achieve the same control. In *An NBA Poem*, the expression
 ```if then else``` evaluation. If ```bromance``` is not falsy, then the
 expression evaluates to "Parsons", else it evaluates to "Basketball".
 
-## Directives
+## Built-in Directives
 
-Directives teach HTML new tricks and allows us to create reusable widgets.  We
-will cover how to create custom directives in *Directives, Teaching an Old HTML
-New Tricks*. In previous chapters, we have already been using basic built-in
-Angular directives such as ```ng-app```, ```ng-controller```, or ```ng-
-click```.
+Directives teach HTML new tricks and allows us to forge reusable widgets.
+Already, we have been using basic built-in Angular directives such as
+```ng- app```, ```ng-model```, ```ng- controller```, or ```ng-click```.
 
-We will cover only a few out-of-the-box directives that are representative of
-different types of directives, by purpose. The official Angular documentation
-contains an API reference detailing all of the directives, totaling 50 or so at
-time of writing.
+Built-in directives can declared in all of several different styles, via
+
+- element: ```<directive></directive>```
+- attribute: ```<div directive="expression"></div>```
+- class: ```<div class="directive = 'expression"></div>```
+- comment: ```<!--directive: expression-->```
+
+We will delve deeper into directives, and how to craft custom directives, in
+*Directives, Teaching an Old HTML New Tricks*.
+
+For now, we will cover some other useful directives that have not yet been
+covered. The official Angular documentation contains an API reference detailing
+all of the directives, totaling over 50 at time of writing.
+
+###ng-class
+
+###ng-repeat
+
+###ng-include
+
+## Form Controls
+
+Angular even overrides ```form``` and ```input``` elements for data-binding.
