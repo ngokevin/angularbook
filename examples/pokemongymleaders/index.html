@@ -1,0 +1,21 @@
+<!doctype html>
+<html ng-app="PokemonGymLeadersApp">
+  <head>
+    <title>Pokemon Gym Leaders</title>
+    <script src="../lib/js/angular.min.js"></script>
+    <script src="app.js"></script>
+    <link rel="stylesheet" href="../lib/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../lib/css/shoehorn.css">
+  </head>
+  <body ng-controller="PokemonGymLeadersCtrl">
+    <h1>Pokemon Gym Leaders</h1>
+    <button ng-click="kanto()">Kanto</button>
+    <button ng-click="johto()">Johto</button>
+    <div ng-repeat="(gymLeader, pokemons) in gymLeaders">
+      <h2>{{ gymLeader }}</h2>
+      <div class="ngRepeat: pokemon in pokemons">
+        {{ pokemon }}
+      </div>
+    </div>
+  </body>
+</html>
