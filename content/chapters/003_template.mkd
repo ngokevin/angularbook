@@ -191,6 +191,35 @@ view.
 
 #### Example
 
+In *Gym Leaders*, we will present a list of Pokemon gym leaders and their
+respective Pokemon to demonstrate ```ng-repeat```.
+
+*examples/gymleaders/app.js*
+
+    ::js
+    $scope.gymLeaders = [
+        {name: 'Brock', pokemon: ['Geodude', 'Onyx']},
+        {name: 'Misty', pokemon: ['Staryu', 'Starmie']},
+        {name: 'Lt. Surge', pokemon: ['Voltorb', 'Magnemite', 'Raichu']},
+        // ...
+    ];
+
+The ```gymLeaders``` data structure is an array of objects which we
+iterate through in the template.
+
+*examples/gymleaders/index.html*
+
+    ::html
+    <div ng-repeat="gymLeader in gymLeaders">
+      <h2>{{ gymLeader.name }}</h2>
+      <span class="ngRepeat: pokemon in gymLeader.pokemon">
+        {{ pokemon }}
+      </span>
+    </div>
+
+We iterate over ```gymLeaders``` and, in a nested loop, iterate through their
+```pokemon```. Each iteration creates a ```div```.
+
 ### ng-include
 
 ## Form Controls

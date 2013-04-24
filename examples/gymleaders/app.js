@@ -1,8 +1,8 @@
-var app = angular.module('PokemonGymLeadersApp', []);
+var app = angular.module('GymLeadersApp', []);
 
 
 // With better dependency injection.
-app.controller('PokemonGymLeadersCtrl', ['$scope', function($scope) {
+app.controller('GymLeadersCtrl', ['$scope', function($scope) {
     var kantoGymLeaders = [
         {name: 'Brock', pokemon: ['Geodude', 'Onyx']},
         {name: 'Misty', pokemon: ['Staryu', 'Starmie']},

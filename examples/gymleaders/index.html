@@ -1,7 +1,7 @@
 <!doctype html>
-<html ng-app="PokemonGymLeadersApp">
+<html ng-app="GymLeadersApp">
   <head>
-    <title>Pokemon Gym Leaders</title>
+    <title>Gym Leaders</title>
     <script src="../lib/js/angular.min.js"></script>
     <script src="app.js"></script>
     <link rel="stylesheet" href="../lib/css/bootstrap.min.css">
@@ -18,8 +18,8 @@
       }
     </style>
   </head>
-  <body ng-controller="PokemonGymLeadersCtrl">
-    <h1>Pokemon Gym Leaders</h1>
+  <body ng-controller="GymLeadersCtrl">
+    <h1>Gym Leaders</h1>
     <button ng-click="kanto()">Kanto</button>
     <button ng-click="johto()">Johto</button>
     <div ng-repeat="gymLeader in gymLeaders">
