@@ -133,7 +133,7 @@ For now, we will cover some other useful directives that have not yet been
 covered. The official Angular documentation contains an API reference detailing
 all of the directives, totaling over 50 at time of writing.
 
-###ng-class
+### ng-class
 
 ```ng-class``` allows us to dynamically set CSS classes. We pass an expression
 containing class names that are either space-delimited, in an array, or in a
@@ -175,15 +175,23 @@ set different classes.
                                 rotateMed: 'rotateMed green'
                                 rotateLarge: 'rotateLarge blue'}[rotate]"></div>
 
-
 Instead mapping from class names to boolean values, we can map from
 property values to class names. We use the scope property to fish the desired
 classes. For example, if ```rotate``` is "rotateSmall", then the ```div``` will
 have the classes "rotateSmall" and "red".
 
-###ng-repeat
+### ng-repeat
 
-###ng-include
+```ng-repeat``` is like a loop in the template. We can loop over an given array
+or map and generate a chunk of template on each iteration. Each instantiated
+template is given its own scope, and each instantiated template is given access
+to temporary variables in context of the loop (e.g. ```$index```, ```$first```,
+```$last```). Often, ```ng-repeat``` is used to generate some sort of list
+view.
+
+#### Example
+
+### ng-include
 
 ## Form Controls
 
