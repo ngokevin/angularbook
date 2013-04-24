@@ -135,6 +135,52 @@ all of the directives, totaling over 50 at time of writing.
 
 ###ng-class
 
+```ng-class``` allows us to dynamically set CSS classes. We pass an expression
+containing class names that are either space-delimited, in an array, or in a
+map that maps the classes to boolean values. Often, we use scope properties
+to conditionally determine whether a class is to be set.
+
+Note classes set with ```ng-class``` are *appended* to the classes normally set
+via the HTML ```class``` attribute.
+
+#### Example
+
+In *Transformer*, we will create checkboxes that will set classes to transform
+an HTML element to demonstrate ```ng-class```.
+
+*examples/transformer/index.html*
+
+    ::html
+    <div class="box" ng-class="{'border': border, 'circle': circle, 'red': red,
+                                'rotate': rotate, 'scale': scale}"></div>
+    <input id="rotate" type="checkbox" ng-model="rotate">
+    <label for="rotate">Rotate</label>
+
+We pass a mapping of classes to expressions. If the expressions are truthy,
+then the class is set. For example, enabling the ```#rotate``` input will set
+```rotate``` to ```true```. The "rotate" class will then be added to the
+```div``` on top of its "box" class.
+
+![transformer](/img/transformer.png)
+
+#### Setting Classes on Specific Values
+
+We can also conditionally set classes based on the specific value of a scope
+property with ```ng-class```. In *Transfomer*, pretend ```rotate```'s possible
+values are "rotateSmall", "rotateMed", and "rotateLarge". For each, we wish to
+set different classes.
+
+    ::html
+    <div class="box" ng-class="{rotateSmall: 'rotateSmall red',
+                                rotateMed: 'rotateMed green'
+                                rotateLarge: 'rotateLarge blue'}[rotate]"></div>
+
+
+Instead mapping from class names to boolean values, we can map from
+property values to class names. We use the scope property to fish the desired
+classes. For example, if ```rotate``` is "rotateSmall", then the ```div``` will
+have the classes "rotateSmall" and "red".
+
 ###ng-repeat
 
 ###ng-include
