@@ -3,27 +3,27 @@ var app = angular.module('PokemonGymLeadersApp', []);
 
 // With better dependency injection.
 app.controller('PokemonGymLeadersCtrl', ['$scope', function($scope) {
-    var kantoGymLeaders = {
-        'Brock': ['Geodude', 'Onyx'],
-        'Misty': ['Staryu', 'Starmie'],
-        'Lt. Surge': ['Voltorb', 'Magnemite', 'Raichu'],
-        'Erika': ['Weepinbell', 'Tangela', 'Vileplume'],
-        'Sabrina': ['Kadabra', 'Mr. Mime', 'Venomoth', 'Alakazam'],
-        'Koga': ['Koffing', 'Muk', 'Koffing', 'Weezing'],
-        'Blaine': ['Growlithe', 'Ponyta', 'Rapidash', 'Arcanine'],
-        'Giovanni': ['Rhyhorn', 'Dugtrio', 'Nidoquuen', 'Nidoking', 'Rhydon']
-    };
+    var kantoGymLeaders = [
+        {name: 'Brock', pokemon: ['Geodude', 'Onyx']},
+        {name: 'Misty', pokemon: ['Staryu', 'Starmie']},
+        {name: 'Lt. Surge', pokemon: ['Voltorb', 'Magnemite', 'Raichu']},
+        {name: 'Erika', pokemon: ['Weepinbell', 'Tangela', 'Vileplume']},
+        {name: 'Sabrina', pokemon: ['Kadabra', 'Mr. Mime', 'Venomoth', 'Alakazam']},
+        {name: 'Koga', pokemon: ['Koffing', 'Muk', 'Koffing', 'Weezing']},
+        {name: 'Blaine', pokemon: ['Growlithe', 'Ponyta', 'Rapidash', 'Arcanine']},
+        {name: 'Giovanni', pokemon: ['Rhyhorn', 'Dugtrio', 'Nidoquuen', 'Nidoking', 'Rhydon']}
+    ];
 
-    var johtoGymLeaders = {
-        'Falkner': ['Pidgey', 'Pidgeotto'],
-        'Bugsy': ['Metapod', 'Kakuna', 'Scyther'],
-        'Whitney': ['Clefairy', 'Miltank'],
-        'Morty': ['Gastly', 'Haunter', 'Haunter', 'Gengar'],
-        'Chuck': ['Primeape', 'Polywrath'],
-        'Jasmine': ['Magnemite', 'Magnemite', 'Steelix'],
-        'Pryce': ['Seel', 'Dewgong', 'Piloswine'],
-        'Clair': ['Dragonair', 'Dragonair', 'Dragonair', 'Kingdra']
-    };
+    var johtoGymLeaders = [
+        {name: 'Falkner', pokemon: ['Pidgey', 'Pidgeotto']},
+        {name: 'Bugsy', pokemon: ['Metapod', 'Kakuna', 'Scyther']},
+        {name: 'Whitney', pokemon: ['Clefairy', 'Miltank']},
+        {name: 'Morty', pokemon: ['Gastly', 'Haunter', 'Haunter', 'Gengar']},
+        {name: 'Chuck', pokemon: ['Primeape', 'Polywrath']},
+        {name: 'Jasmine', pokemon: ['Magnemite', 'Magnemite', 'Steelix']},
+        {name: 'Pryce', pokemon: ['Seel', 'Dewgong', 'Piloswine']},
+        {name: 'Clair', pokemon: ['Dragonair', 'Dragonair', 'Dragonair', 'Kingdra']}
+    ];
 
     $scope.gymLeaders = kantoGymLeaders;
     $scope.kanto = function() {

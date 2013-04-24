@@ -6,16 +6,27 @@
     <script src="app.js"></script>
     <link rel="stylesheet" href="../lib/css/bootstrap.min.css">
     <link rel="stylesheet" href="../lib/css/shoehorn.css">
+    <style>
+      button {
+          margin-bottom: 13px;
+      }
+      div {
+          display: inline;
+      }
+      span {
+          margin-right: 2px;
+      }
+    </style>
   </head>
   <body ng-controller="PokemonGymLeadersCtrl">
     <h1>Pokemon Gym Leaders</h1>
     <button ng-click="kanto()">Kanto</button>
     <button ng-click="johto()">Johto</button>
-    <div ng-repeat="(gymLeader, pokemons) in gymLeaders">
-      <h2>{{ gymLeader }}</h2>
-      <div class="ngRepeat: pokemon in pokemons">
+    <div ng-repeat="gymLeader in gymLeaders">
+      <h2>{{ gymLeader.name }}</h2>
+      <span class="ngRepeat: pokemon in gymLeader.pokemon">
         {{ pokemon }}
-      </div>
+      </span>
     </div>
   </body>
 </html>
