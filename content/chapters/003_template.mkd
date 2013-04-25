@@ -129,9 +129,9 @@ Built-in directives can declared in all of several different styles, via
 We will delve deeper into directives, and how to craft custom directives, in
 *Directives, Teaching an Old HTML New Tricks*.
 
-For now, we will cover some other useful directives that have not yet been
-covered. The official Angular documentation contains an API reference detailing
-all of the directives, totaling over 50 at time of writing.
+For now, we will cover some useful directives that have not yet been covered.
+The official Angular documentation contains an API reference detailing all of
+the directives, totaling over 50 at time of writing.
 
 ### ngclass
 
@@ -242,7 +242,11 @@ directive along with whatever is within.
 
 ![Gym Leaders](/img/gymleaders.png)
 
-### ng-include
+### ngInclude
+
+```ngInclude``` allows us to fetch, compile, and embed an external HTML
+fragment or template. Often, we use ```ngInclude``` to embed an a chunk of HTML
+that we have abstracted into a **partial** for encapsulation or reusability.
 
 ## Form Controls
 
