@@ -11,7 +11,7 @@ app.controller('GymLeadersCtrl', ['$scope', function($scope) {
         {name: 'Sabrina', pokemon: ['Kadabra', 'Mr. Mime', 'Venomoth', 'Alakazam']},
         {name: 'Koga', pokemon: ['Koffing', 'Muk', 'Koffing', 'Weezing']},
         {name: 'Blaine', pokemon: ['Growlithe', 'Ponyta', 'Rapidash', 'Arcanine']},
-        {name: 'Giovanni', pokemon: ['Rhyhorn', 'Dugtrio', 'Nidoquuen', 'Nidoking', 'Rhydon']}
+        {name: 'Giovanni', pokemon: ['Rhyhorn', 'Dugtrio', 'Nidoqueen', 'Nidoking', 'Rhydon']}
     ];
 
     var johtoGymLeaders = [

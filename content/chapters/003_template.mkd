@@ -133,7 +133,7 @@ For now, we will cover some useful directives that have not yet been covered.
 The official Angular documentation contains an API reference detailing all of
 the directives, totaling over 50 at time of writing.
 
-### ngclass
+### ngClass
 
 ```ngClass``` allows us to dynamically set CSS classes. We pass an expression
 containing class names that are either space-delimited, in an array, or in a
@@ -142,6 +142,18 @@ to conditionally determine whether a class is to be set.
 
 Note classes set with ```ngClass``` are *appended* to the classes normally set
 via the HTML ```class``` attribute.
+
+One way to register the directive is to pass ```expression``` into
+```ng-class```. The official Angular docmentation denotes expressions in
+brackets when describing directive use, ```{expression}```, but note that it is
+for annotation purposes. Expressions should **not** actually be surrounded in
+brackets, unless we are passing a map which are coincidentally surrounded by
+brackets.
+
+    ::html
+    <ANY ng-class="{expression}">
+      ...
+    </ANY>
 
 #### Example
 
@@ -191,6 +203,11 @@ to temporary variables in context of the loop (e.g. ```$index```, ```$first```,
 ```$last```). Often, ```ngRepeat``` is used to generate some sort of list
 view.
 
+    ::html
+    <ANY ng-repeat="{repeatExpression}">
+      ...
+    </ANY>
+
 #### Example
 
 In *Gym Leaders*, we will present a list of Pokemon gym leaders and their
@@ -238,6 +255,25 @@ directive along with whatever is within.
       </span>
     </div>
 
+```ngRepeat``` can also iterate over JS objects, unpacking the keys and
+values. We could have defined ```gymLeaders``` using names of the gym leaders
+as keys.
+
+    ::js
+    $scope.gymLeaders = {
+        'Brock': ['Geodude', 'Onyx'],
+        'Misty': ['Staryu', 'Starmie'],
+        'Lt. Surge': ['Voltorb', 'Magnemite', 'Raichu'],
+        // ...
+    };
+
+We could then iterate with ```ngRepeat```, although the order in which we
+defined the gym leaders would not be preserved.
+
+    ::html
+    <div ng-repeat="(gymLeader, pokemon) in gymLeaders">
+        // ...
+
 *Result of Gym Leaders*
 
 ![Gym Leaders](/img/gymleaders.png)
@@ -245,8 +281,46 @@ directive along with whatever is within.
 ### ngInclude
 
 ```ngInclude``` allows us to fetch, compile, and embed an external HTML
-fragment or template. Often, we use ```ngInclude``` to embed an a chunk of HTML
-that we have abstracted into a **partial** for encapsulation or reusability.
+fragment or template. This inherits and creates a new scope. Often, we use
+```ngInclude``` to include HTML that we have abstracted into a **partial**, a
+separate HTML template, for encapsulation or reusability.
+
+    ::html
+    <ANY ng-include="{srcString}">
+      ...
+    </ANY>
+
+Since we are often including our own partial, ```srcString``` is usually a
+relative path to the partial file. Note **cross-origin resource sharing**
+(CORS) restrictions still apply to included resources so the partial must be
+within the same domain.
+
+#### Example
+
+In *Gym Leaders*, we will recycle our previous example and create a small
+partial to use within ```ng-repeat``` to demonstrate ```ng-include```.
+
+*examples/gymleaders/partials/gym_leader.html*
+
+    ::html
+    <h2>{{ gymLeader.name }}</h2>
+    <span class="ngRepeat: pokemon in gymLeader.pokemon">
+      {{ pokemon }}
+    </span>
+
+We abstract the HTML from within our earlier ```ngRepeat``` loop into its
+own partial. When we include the partial, it inherit the scope so the data
+bindings will still evaluate properly.
+
+*examples/gymleaders/index.html*
+
+    ::html
+    <div ng-repeat="gymLeader in gymLeaders">
+      <div ng-include="'partials/gym_leader.html'"></div>
+    </div>
+
+Then we simply include our partial. The results are identical to the results
+had we not created a partial, but the main HTML file is now cleaner.
 
 ## Form Controls
 

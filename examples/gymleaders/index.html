@@ -23,10 +23,7 @@
     <button ng-click="kanto()">Kanto</button>
     <button ng-click="johto()">Johto</button>
     <div ng-repeat="gymLeader in gymLeaders">
-      <h2>{{ gymLeader.name }}</h2>
-      <span class="ngRepeat: pokemon in gymLeader.pokemon">
-        {{ pokemon }}
-      </span>
+      <div ng-include="'partials/gym_leader.html'"></div>
     </div>
   </body>
 </html>
