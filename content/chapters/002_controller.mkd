@@ -45,8 +45,8 @@ We pass in the name of the controller along with the controller function with
 its dependencies it wants injected.
 
 To use our module, along with our registered ```HelloWorldCtrl``` controller,
-we must pass the name of our module into the top-level ```ng-app``` directive.
-Again, we use the ```ng- controller``` directive to create the scope and
+we must pass the name of our module into the top-level ```ngApp``` directive.
+Again, we use the ```ngController``` directive to create the scope and
 associate our controller.
 
 *examples/helloworld/index.js*
@@ -172,9 +172,11 @@ something we would not be able to do from the template.
       <button ng-click='crank()'>Crank</button>
     </body>
 
-Then we can call it from the template by passing it to the ```ng-click```
+Then we can call it from the template by passing it to the ```ngClick```
 directive, with parenthesis to indicate a function. We could even pass
 parameters to the function if we desired.
+
+*Result of Jack in the Box*
 
 ![jackinthebox](/img/jackinthebox.png)
 
@@ -186,7 +188,7 @@ Inner controllers contain their own scopes, while those scopes inherit from
 their outer controllers' scopes.
 
 To create a child controller, declare it within the element of the parent
-controller with the ```ng-controller``` directive.
+controller with the ```ngController``` directive.
 
 ### Example
 
@@ -231,6 +233,8 @@ that initial value.
 We can then continue going down the chain, overriding "Non-Believer" with "God"
 in ```GodCtrl```, overriding "God" with "King", then finally overriding "King"
 with "Mob".
+
+*Result of No Church in the Wild*
 
 ![nochurchinthewild](/img/nochurchinthewild.png)
 

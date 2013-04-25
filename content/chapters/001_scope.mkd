@@ -39,15 +39,17 @@ scope.
     <button ng-click="color= 'black'">Black</button>
     <button ng-click="color= 'yellow'">Yellow</button>
 
-We instantiate the ```color``` attribute on the root scope with the ```ng-
-init``` directive. We have the ```div``` watch for changes to ```color``` with
-the placeholder. Whenever ```color``` changes, the background of the ```div```
-will change.
+We instantiate the ```color``` attribute on the root scope with the
+```ngInit``` directive. We have the ```div``` watch for changes to ```color```
+with the placeholder. Whenever ```color``` changes, the background of the
+```div``` changes as well.
 
-To register this behavior with the buttons, we use the ```ng-click``` directive
+To register this behavior with the buttons, we use the ```ngClick``` directive
 which attaches an event handler to the DOM element. For the yellow button, we
 attach the expression, ```color = 'yellow'```, which will set the attribute of
 the scope to be "yellow".
+
+*Result of Black and Yellow*
 
 ![blackandyellow](/img/blackandyellow.png)
 
@@ -94,9 +96,9 @@ the initial state and add behavior to scope objects, from the Javascript side.
 The controller will give us a scope object. We can then use its ```$watch```
 function to observe the checkboxes.
 
-A child scope of the root scope is created under the ```ng-controller```
+A child scope of the root scope is created under the ```ngController```
 directive. As we see, this is one way to create child scopes. We have also been
-creating the root scope in the template as well. The ```ng-app``` directive we
+creating the root scope in the template as well. The ```ngApp``` directive we
 have been using to bootstrap our Angular applications has been creating the
 root scope.
 
@@ -146,6 +148,8 @@ which will be discussed in *Controllers, Serious Business*,
 
 We set a ```$watch``` on the scope on ```mother``` and ```father```. When
 either attribute changes value, the supplied callback function will execute.
+
+*Result of Gentleman*
 
 ![gentleman](/img/gentleman.png)
 
@@ -211,6 +215,10 @@ would not be updated to the view, and the countdown would not run. Since we do
 call ```$apply```, the data-binding is effectively refreshed, and the countdown
 runs.
 
+*Result of No Church in the Wild*
+
+![hl3countdown](/img/hl3countdown.png)
+
 Note we put counter-decrementing code within the function passed into
 ```$apply```. We could just as well call ```$apply``` on its own to achieve
 the same effect.
@@ -218,10 +226,6 @@ the same effect.
     ::js
     $rootScope.countdown--;
     $rootScope.$apply();
-
-And the result.
-
-![hl3countdown](/img/hl3countdown.png)
 
 ## Up Next
 
