@@ -21,9 +21,9 @@ Angular seasons several different types of spices on top of standard HTML,
   bindings.
 - directives that augment existing DOM elements or represent a reusable
   component.
+- **filters** that format or prettify data for display.
 - form controls that allow the user to input and allow the application to
   validate data.
-- **filters** that format or prettify data for display.
 
 ## Angular Expressions
 
@@ -319,9 +319,76 @@ bindings will still evaluate properly.
       <div ng-include="'partials/gym_leader.html'"></div>
     </div>
 
-Then we simply include our partial. The results are identical to the results
-had we not created a partial, but the main HTML file is now cleaner.
+Then we simply include our partial. The compiled HTML is identical to had we
+not used a partial. Though now the main HTML file is somewhat cleaner, and we
+could reuse our partial in other parts of the app if needed.
+
+## Filters
+
+Angular filters format or prettify data for display to the user. They can take
+colon-delimited arguments and can also be chained.
+
+    ::js
+    {{ expression | firstFilter | secondFilter:arg1:arg2 }}
+
+Angular comes with a handful of handy filters built-in, all of which can be
+found in the official Angular API reference.
+
+### Example
+
+In *Hot Chat Phone Bill*, we will create a fake phone bill to demonstrate some
+built-in Angular filters.
+
+*examples/hotchatphonebill/index.html*
+
+      ::html
+      <dt>ID</dt> <dd>{{ 'oskpmknz' | uppercase }}</dd>
+      <dt>Date</dt> <dd>{{ billDate | date:'medium' }}</dd>
+      <dt>Charge Amount</dt> <dd>{{ 199.98 | currency }}</dd>
+
+These filters highlight basic use. The ```uppercase``` filter simply transforms
+a string to uppercase representation, no strings attached.
+
+Filters can also take argments. The ```date``` demonstrates such, taking a
+string format describing how we want the date to be represented. "medium" is
+a built-in choice by Angular.
+
+*examples/hotchatphonebill/index.html*
+
+      ::html
+      <thead>
+        <tr>
+          <th ng-click="orderby = 'operator'; reverse = false"><a>Operator</a></th>
+          <th ng-click="orderby = 'minutes'; reverse = true"><a>Minutes</a></th>
+        </tr>
+      </thead>
+      <tbody ng-init="orderby = 'minutes'; reverse = true">
+        <tr ng-repeat="call in calls | orderBy:(orderby):reverse">
+          <td>{{ call.operator }}</td>
+          <td>{{ call.minutes }}</td>
+        </tr>
+      </tbody>
+
+Some filters operate on arrays. ```orderBy``` sorts an array and can take in
+multiple arguments. These arguments include what object properties to order by
+and whether to sort forwards or backwards.
+
+We sort the call transactions either by the name of the operator or the minutes
+of the call. To mix it up, we make it a bit more dynamic, by changing the sort
+property and order upon clicking respective table headers.
+
+*Result of Hot Chat Phone Bill*
+
+![Hot Chat Phone Bill](/img/hotchatphonebill.png)
+
+### Creating Custom Filters
 
 ## Form Controls
 
-Angular even overrides ```form``` and ```input``` elements for data-binding.
+Angular overrides ```form``` and ```input``` elements for data-binding.
+Validation facilties
+Validation classes
+Control state
+Custom validation
+Custom form control
+

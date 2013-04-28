@@ -16,3 +16,18 @@ img {
 input[type="checkbox"] {
     margin: 0 4px;
 }
+
+dt {
+    margin-bottom: 3px;
+}
+dd {
+    margin-bottom: 6px;
+}
+
+table.table th, table.table td {
+    text-align: center;
+}
+
+a {
+    cursor: pointer;
+}
