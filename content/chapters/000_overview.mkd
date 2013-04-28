@@ -123,4 +123,5 @@ required.
 ## Up Next
 
 With some concepts on our belt and a sneak peek at Angular in action, we will
-take a deeper gander at the model side of Angular, the scope.
+take a deeper gander at the model side of Angular, the scope, in
+*Scopes, Targeting the Data Model*.

@@ -399,12 +399,7 @@ arguments will also be passed to the function.
 The filter can now be called in the template. Sorry, no hot chat examples for
 custom filters.
 
-## Form Controls
+## Up Next
 
-Angular overrides ```form``` and ```input``` elements for data-binding.
-Validation facilties
-Validation classes
-Control state
-Custom validation
-Custom form control
-
+Now adorned with some knowledge of Angular templates, we delve into different
+aspect of templates, form controls and validation, in *Forms, Russia with Love*.

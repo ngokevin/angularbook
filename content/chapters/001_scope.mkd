@@ -232,4 +232,4 @@ the same effect.
 Scopes cover the *M* in MVC. We will pass over the *V* for now and head
 directly for the *C*, the controllers. We have slowly been getting introduced
 to controllers during this chapter. And now we can naturally delve into the
-meatier portions of Angular.
+meatier portions of Angular in *Controllers, Serious Business*.
