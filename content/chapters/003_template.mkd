@@ -341,10 +341,10 @@ built-in Angular filters.
 
 *examples/hotchatphonebill/index.html*
 
-      ::html
-      <dt>ID</dt> <dd>{{ 'oskpmknz' | uppercase }}</dd>
-      <dt>Date</dt> <dd>{{ billDate | date:'medium' }}</dd>
-      <dt>Charge Amount</dt> <dd>{{ 199.98 | currency }}</dd>
+    ::html
+    <dt>ID</dt> <dd>{{ 'oskpmknz' | uppercase }}</dd>
+    <dt>Date</dt> <dd>{{ billDate | date:'medium' }}</dd>
+    <dt>Charge Amount</dt> <dd>{{ 199.98 | currency }}</dd>
 
 These filters highlight basic use. The ```uppercase``` filter simply transforms
 a string to uppercase representation, no strings attached.
@@ -355,19 +355,19 @@ a built-in choice by Angular.
 
 *examples/hotchatphonebill/index.html*
 
-      ::html
-      <thead>
-        <tr>
-          <th ng-click="orderby = 'operator'; reverse = false"><a>Operator</a></th>
-          <th ng-click="orderby = 'minutes'; reverse = true"><a>Minutes</a></th>
-        </tr>
-      </thead>
-      <tbody ng-init="orderby = 'minutes'; reverse = true">
-        <tr ng-repeat="call in calls | orderBy:(orderby):reverse">
-          <td>{{ call.operator }}</td>
-          <td>{{ call.minutes }}</td>
-        </tr>
-      </tbody>
+    ::html
+    <thead>
+      <tr>
+        <th ng-click="orderby = 'operator'; reverse = false"><a>Operator</a></th>
+        <th ng-click="orderby = 'minutes'; reverse = true"><a>Minutes</a></th>
+      </tr>
+    </thead>
+    <tbody ng-init="orderby = 'minutes'; reverse = true">
+      <tr ng-repeat="call in calls | orderBy:(orderby):reverse">
+        <td>{{ call.operator }}</td>
+        <td>{{ call.minutes }}</td>
+      </tr>
+    </tbody>
 
 Some filters operate on arrays. ```orderBy``` sorts an array and can take in
 multiple arguments. These arguments include what object properties to order by
@@ -382,6 +382,22 @@ property and order upon clicking respective table headers.
 ![Hot Chat Phone Bill](/img/hotchatphonebill.png)
 
 ### Creating Custom Filters
+
+Use the Angular ```module```'s ```filter``` factory method to create and
+register a custom filter. The method should take the name of the filter as the
+first argument and the filter function as the second argument.
+
+The filter function should take the input as the first argument. Additional
+arguments will also be passed to the function.
+
+    ::js
+    angular.module('myModule', []).filter('myFilter', function(input, arg) {
+        // Do something with input.
+        return input;
+    });
+
+The filter can now be called in the template. Sorry, no hot chat examples for
+custom filters.
 
 ## Form Controls
 
