@@ -26,25 +26,40 @@ With directives though, we can also achieve
 
 ## Form State
 
-A bit about the backend. Angular forms are an instance of ```FormController```.
-As instances of ```FormController```, ```form``` directives contain a handful
-of useful properties that represent form state.
+A bit about the backend. Angular forms and inputs are instances of
+```FormController```. As instances of ```FormController```, form and input
+directives contain a handful of useful properties that represent form state.
 
 - ```$pristine```: True if the user has not yet interacted with the form
 - ```$dirty```: opposite of ```$dirty```
 - ```$valid```: True if all of containing forms and controls are valid
 - ```$invalid```: opposite of ```$valid```
-- ```$error```: reference (via JS object) to invalid form controls
+- ```$error```: a JS object referencing invalid forms or a mapping of error
+  names to booleans
 
-To reference these properties though, the ```form``` directive needs to be
-given a ```name``` attribute to register it into scope. We can then use these
-properties to control the form such as with the ```ng-disabled``` to
-conditionally disable form controls.
+```$error``` is a bit confusing as it has two faces. If getting the ```$error```
+attribute from a *form's* ```FormController```, it will be a reference to invalid
+form controls.
+
+    ::js
+    {"required": [{}], "max": false}
+
+Else if getting the ```$error``` attribute from an *input's*
+```FormController```, it will be a mapping of error names to booleans (with
+"true" indicating an error).
+
+
+    ::js
+    {"required": false, "max": true}
+
+To reference all these properties though, the form and input directives need to
+be given a ```name``` attribute to register it into scope. We can then use
+these properties to drive form interaction and behavior.
 
 ### Example
 
-In *Muffin Button*, we will create a button that dispenses a number of muffins to
-demonstrate enabling and disabling controls based on form state.
+In *Muffin Button*, we will create a button that dispenses a number of muffins
+to demonstrate form states.
 
 ### Styling the Form Based on Form State
 

@@ -1,11 +1,11 @@
-var app = angular.module('HelloWorldApp', []);
+var app = angular.module('MuffinButtonApp', []);
 
 
-app.controller('HelloWorldCtrl', function($scope) {
-    $scope.targetOfSalutation = 'World';
+app.filter('range', function() {
+  return function(input, total) {
+    total = parseInt(total, 10);
+    for (var i=0; i<total; i++)
+      input.push(i);
+    return input;
+  };
 });
-
-// With better dependency injection.
-app.controller('HelloWorldCtrl', ['$scope', function(scope) {
-    scope.targetOfSalutation = 'World';
-}]);
