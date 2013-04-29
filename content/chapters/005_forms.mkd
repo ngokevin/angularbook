@@ -1,0 +1,44 @@
+title: Forms, Russia with Love
+category: chapter
+slug: forms
+chapter: 005
+
+---
+
+```form```, ```input```, ```select```, and ```textarea``` elements are
+augmented (as directives) in Angular for added sauce. Angular forms have a
+built-in awareness of their state, such as whether data has been inputted or
+whether the forms are valid. Angular forms provide
+
+- two-way data binding with the model.
+- form state.
+
+We have covered the two-way data binding in *AngularJS, Allonsy*. Form state,
+however, can be used to conditionally
+
+- enable or disable form controls (e.g. buttons).
+- style the form.
+
+With directives though, we can also achieve
+
+- custom form validation.
+- custom form controls.
+
+## Form State
+
+A bit about the backend. Angular forms are an instance of ```FormController```.
+As instances of ```FormController```, ```form``` directives contain a handful
+of useful properties that represent form state.
+
+- ```$pristine```: True if the user has not yet interacted with the form
+- ```$dirty```: opposite of ```$dirty```
+- ```$valid```: True if all of containing forms and controls are valid
+- ```$invalid```: opposite of ```$valid```
+- ```$error```: reference (via JS object) to invalid form controls
+
+
+## Styling the Form Based on Form State
+
+## Custom Form Validation
+
+## Custom Form Controls

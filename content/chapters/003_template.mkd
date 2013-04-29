@@ -401,5 +401,6 @@ custom filters.
 
 ## Up Next
 
-Now adorned with some knowledge of Angular templates, we delve into different
-aspect of templates, form controls and validation, in *Forms, Russia with Love*.
+Scopes, controllers, and templates lay the foundation of the cake. Now we
+start decorating with the frostiest part of Angular, directives, in
+*Directive's Cut*.
