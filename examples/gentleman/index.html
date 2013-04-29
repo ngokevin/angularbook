@@ -22,17 +22,16 @@
       img.show {
           opacity: 1;
       }
-      label {
-          display: inline;
-      }
     </style>
   </head>
   <body ng-controller="GentlemanCtrl">
     <h1>Gentleman</h1>
-    <img src="gentleman.png">
-    <input id="mother" type="checkbox" ng-model="mother">
-    <label for="mother">Mother</label>
-    <input id="father" type="checkbox" ng-model="father">
-    <label for="father">Father</label>
+    <img class="img-circle" src="gentleman.png">
+    <label for="mother" class="checkbox inline">
+      <input id="mother" type="checkbox" ng-model="mother">Mother
+    </label>
+    <label for="father" class="checkbox inline">
+      <input id="father" type="checkbox" ng-model="father">Father
+    </label>
   </body>
 </html>

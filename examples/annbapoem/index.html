@@ -6,28 +6,24 @@
     <script src="app.js"></script>
     <link rel="stylesheet" href="../lib/css/bootstrap.min.css">
     <link rel="stylesheet" href="../lib/css/shoehorn.css">
-    <style>
-      span {
-          font-weight: bold;
-          text-decoration: underline;
-      }
-    </style>
   </head>
   <body ng-init="theDeludedOne = 'monta'; lebronRings = 0; bromance = true;">
-    <h1>An NBA Poem</h1>
-    <p>
-      Not <span>{{ lebronRings + 1 }}</span>.
-      Not <span>{{ lebronRings + 2 }}</span>.
-      Not <span>{{ lebronRings + 3 }}</span>.
-    </p>
-    <p>Because <span>{{ theDeludedOne }}</span> have it all.</p>
-    <p>
-      <span>{{ chris || 'Cliff' }}</span> and
-      <span>{{ cliff || 'Chris' }}</span> Paul, hoping for the championship.
-    </p>
-    <p>
-      While <span>{{ bromance && 'Parsons' || 'Basketball' }}</span> and Lin,
-      a most delicate relationship.
-    </p>
+    <blockquote>
+      <p>
+        Not <strong>{{ lebronRings + 1 }}</strong>.
+        Not <strong>{{ lebronRings + 2 }}</strong>.
+        Not <strong>{{ lebronRings + 3 }}</strong>.
+      </p>
+      <p>Because <strong>{{ theDeludedOne }}</strong> have it all.</p>
+      <p>
+        <strong>{{ chris || 'Cliff' }}</strong> and
+        <strong>{{ cliff || 'Chris' }}</strong> Paul, hoping for the championship.
+      </p>
+      <p>
+        While <strong>{{ bromance && 'Parsons' || 'Basketball' }}</strong> and Lin,
+        a most delicate relationship.
+      </p>
+      <small>An NBA Poem</small>
+    </blockquote>
   </body>
 </html>

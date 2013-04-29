@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="../lib/css/bootstrap.min.css">
     <link rel="stylesheet" href="../lib/css/shoehorn.css">
     <style>
-      button {
+      button.btn {
           margin-bottom: 13px;
       }
       div {
@@ -20,8 +20,8 @@
   </head>
   <body ng-controller="GymLeadersCtrl">
     <h1>Gym Leaders</h1>
-    <button ng-click="kanto()">Kanto</button>
-    <button ng-click="johto()">Johto</button>
+    <button class="btn btn-primary" ng-click="kanto()">Kanto</button>
+    <button class="btn btn-primary" ng-click="johto()">Johto</button>
     <div ng-repeat="gymLeader in gymLeaders">
       <div ng-include="'partials/gym_leader.html'"></div>
     </div>

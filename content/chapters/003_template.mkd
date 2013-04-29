@@ -165,8 +165,9 @@ an HTML element to demonstrate ```ngClass```.
     ::html
     <div class="box" ng-class="{'border': border, 'circle': circle, 'red': red,
                                 'rotate': rotate, 'scale': scale}"></div>
-    <input id="rotate" type="checkbox" ng-model="rotate">
-    <label for="rotate">Rotate</label>
+    <label for="rotate">
+      <input id="rotate" type="checkbox" ng-model="rotate">Rotate
+    </label>
 
 We pass a mapping of classes to expressions. If the expressions are truthy,
 then the class is set. For example, enabling the ```#rotate``` input will set

@@ -21,19 +21,19 @@ that controllers
 
 ### Example
 
-In *Hello World*, we will print "Hello, world" to demonstrate a more correct
+In *Sup, World*, we will print "Sup, world" to demonstrate a more correct
 declaration of controllers that do not reside in the global JS scope.
 
 Rather, it is more correct to create an Angular ```module``` and use its
 ```controller``` factory function to register a controller to the view, to not
 pollute the global namespace.
 
-*examples/helloworld/app.js*
+*examples/supworld/app.js*
 
     ::js
-    var app = anglar.module('helloWorldApp', []);
+    var app = anglar.module('SupWorldApp', []);
 
-    app.controller('HelloWorldCtrl', function($scope) {
+    app.controller('SupWorldCtrl', function($scope) {
         $scope.targetOfSalutation = 'World';
     });
 
@@ -44,18 +44,18 @@ modules include services, directives, and filters.
 We pass in the name of the controller along with the controller function with
 its dependencies it wants injected.
 
-To use our module, along with our registered ```HelloWorldCtrl``` controller,
+To use our module, along with our registered ```SupWorldCtrl``` controller,
 we must pass the name of our module into the top-level ```ngApp``` directive.
 Again, we use the ```ngController``` directive to create the scope and
 associate our controller.
 
-*examples/helloworld/index.js*
+*examples/supworld/index.js*
 
     ::html
     <!doctype html>
-    <html ng-app="helloWorldApp">
-      <body ng-controller="HelloWorldCtrl">
-        <h1>Hello, {{ targetOfSalutation }}</h1>
+    <html ng-app="SupWorldApp">
+      <body ng-controller="SupWorldCtrl">
+        <h1>Sup, {{ targetOfSalutation }}</h1>
       </body>
     </html>
 
@@ -104,7 +104,7 @@ testing.
 
 ### Dependency Injection in Controllers
 
-Earlier in *Hello World*, we properly registered a controller to the view using
+Earlier in *Sup, World*, we properly registered a controller to the view using
 an Angular ```module``` and its factory function, ```controller```. There is
 yet a more correct method, involving dependency injection.
 
@@ -116,14 +116,14 @@ annotation.
 
 ### Example
 
-In *Hello World*, we will again print "Hello, World" using a different method
+In *Sup, World*, we will again print "Sup, World" using a different method
 to demonstrate declaring controllers with proper dependency injection.
 
-*examples/helloworld/app.js*
+*examples/supworld/app.js*
 
     ::js
     // With better dependency injection.
-    app.controller('HelloWorldCtrl', ['$scope', function(scope) {
+    app.controller('SupWorldCtrl', ['$scope', function(scope) {
         scope.targetOfSalutation = 'World';
     }]);
 

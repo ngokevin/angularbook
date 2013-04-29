@@ -69,13 +69,13 @@ but on the client and, in our case, manipulated via JS.
 
 Angular templates are a special flavor of templates. Along with control
 structures and variable placeholders, they are also capable of declaring two-
-way data bindings and event handlers. In our next example *Baby Example*, we
-will get our first glimpse at some Angular, featuring our Angular template.
+way data bindings and event handlers. In our next example
+*Invitation to Angular*, we will get a first glimpse at some Angular.
 
 ### Example
 
-In *Baby Example*, we will sync an HTML text input element with a ```p```
-element to demonstrate two-way data binding.
+In *Invitation to Angular*, we will sync an HTML text input element with a
+```p``` element to demonstrate two-way data binding.
 
 *examples/babyexample/index.html*
 
@@ -86,12 +86,13 @@ element to demonstrate two-way data binding.
         <script src="../lib/js/angular.min.js"></script>
       </head>
       <body>
-        <h1>Baby Example</h1>
+        <h1>Invitation to Angular</h1>
         <input type="text" ng-model="mySpecies" placeholder="What is your species?">
         <p>
           It is a great honor to bask
           in the presence of a {{ mySpecies || 'human' }}.
         </p>
+        <p>Angular humbly welcomes you.</p>
       </body>
     </html>
 
@@ -116,9 +117,9 @@ backend will automatically update to "cyberman" as we type. Since we have
 ```species``` under two-way data binding, no ```onchange``` event handlers are
 required.
 
-*Result of Baby Example*
+*Result of Invitation to Angular*
 
-![babyexample](/img/babyexample.png)
+![invitationtoangular](/img/babyexample.png)
 
 ## Up Next
 

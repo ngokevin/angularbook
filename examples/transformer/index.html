@@ -34,23 +34,25 @@
         transform: rotate(45deg) scale(2);
         margin: 100px auto;
     }
-    label {
-        display: inline;
-    }
   </style>
   <body>
     <h1>Transformer</h1>
     <div class="box" ng-class="{'border': border, 'circle': circle, 'red': red,
                                 'rotate': rotate, 'scale': scale}"></div>
-    <input id="border" type="checkbox" ng-model="border">
-    <label for="border">Border</label>
-    <input id="circle" type="checkbox" ng-model="circle">
-    <label for="circle">Circle</label>
-    <input id="red" type="checkbox" ng-model="red">
-    <label for="red">Red</label>
-    <input id="rotate" type="checkbox" ng-model="rotate">
-    <label for="rotate">Rotate</label>
-    <input id="scale" type="checkbox" ng-model="scale">
-    <label for="scale">Scale</label>
+    <label class="checkbox inline" for="border">
+      <input id="border" type="checkbox" ng-model="border">Border
+    </label>
+    <label class="checkbox inline" for="circle">
+      <input id="circle" type="checkbox" ng-model="circle">Circle
+    </label>
+    <label class="checkbox inline" for="red">
+      <input id="red" type="checkbox" ng-model="red">Red
+    </label>
+    <label class="checkbox inline" for="rotate">
+      <input id="rotate" type="checkbox" ng-model="rotate">Rotate
+    </label>
+    <label class="checkbox inline" for="scale">
+      <input id="scale" type="checkbox" ng-model="scale">Scale
+    </label>
   </body>
 </html>

@@ -1,4 +1,4 @@
-title: Forms, Russia with Love
+title: Forms Russia with Love
 category: chapter
 slug: forms
 chapter: 005
@@ -36,8 +36,17 @@ of useful properties that represent form state.
 - ```$invalid```: opposite of ```$valid```
 - ```$error```: reference (via JS object) to invalid form controls
 
+To reference these properties though, the ```form``` directive needs to be
+given a ```name``` attribute to register it into scope. We can then use these
+properties to control the form such as with the ```ng-disabled``` to
+conditionally disable form controls.
 
-## Styling the Form Based on Form State
+### Example
+
+In *Muffin Button*, we will create a button that dispenses a number of muffins to
+demonstrate enabling and disabling controls based on form state.
+
+### Styling the Form Based on Form State
 
 ## Custom Form Validation
 

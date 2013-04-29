@@ -1,0 +1,18 @@
+<!doctype html>
+<html ng-app>
+  <head>
+    <title>Muffin Button</title>
+    <script src="../lib/js/angular.min.js"></script>
+    <link rel="stylesheet" href="../lib/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../lib/css/shoehorn.css">
+  </head>
+  <body>
+    <h1>Muffin Button<h1>
+    <form name="muffinForm" ng-init="muffins = 0;">
+      <label for="muffinInput">How many muffins may you mind?</label>
+      <input id="muffinInput" type="text" ng-model="muffins">
+      <div class="form-actions">
+        <button class="btn-large btn-primary">Dispense Muffins</button>
+      </div>
+  </body>
+</html>

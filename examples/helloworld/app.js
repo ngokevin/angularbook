@@ -1,11 +1,11 @@
-var app = angular.module('HelloWorldApp', []);
+var app = angular.module('SupWorldApp', []);
 
 
-app.controller('HelloWorldCtrl', function($scope) {
+app.controller('SupWorldCtrl', function($scope) {
     $scope.targetOfSalutation = 'World';
 });
 
 // With better dependency injection.
-app.controller('HelloWorldCtrl', ['$scope', function(scope) {
+app.controller('SupWorldCtrl', ['$scope', function(scope) {
     scope.targetOfSalutation = 'World';
 }]);
