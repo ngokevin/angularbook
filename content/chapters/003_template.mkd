@@ -388,13 +388,16 @@ Use the Angular ```module```'s ```filter``` factory method to create and
 register a custom filter. The method should take the name of the filter as the
 first argument and the filter function as the second argument.
 
+To take arguments, the parameter function should return the filter function.
 The filter function should take the input as the first argument. Additional
-arguments will also be passed to the function.
+arguments can also be passed to the function.
 
     ::js
-    angular.module('myModule', []).filter('myFilter', function(input, arg) {
-        // Do something with input.
-        return input;
+    angular.module('myModule', []).filter('myFilter', function() {
+        return function(input, arg) {
+            // Do something with input.
+            return input;
+        }
     });
 
 The filter can now be called in the template. Sorry, no hot chat examples for

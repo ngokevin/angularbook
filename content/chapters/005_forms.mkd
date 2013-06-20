@@ -48,7 +48,6 @@ Else if getting the ```$error``` attribute from an *input's*
 ```FormController```, it will be a mapping of error names to booleans (with
 "true" indicating an error).
 
-
     ::js
     {"required": false, "max": true}
 
@@ -60,6 +59,49 @@ these properties to drive form interaction and behavior.
 
 In *Muffin Button*, we will create a button that dispenses a number of muffins
 to demonstrate form states.
+
+*examples/muffinbutton/index.html*
+
+    ::html
+    <form name="muffinForm" ng-submit="muffins = muffinNum">
+      <input id="muffinNum" type="number" name="muffinNumInput"
+             ng-model="muffinNum" min="1" max="255">
+
+      <button ng-disabled="muffinForm.muffinNumInput.$invalid">
+        Dispense Muffins
+      </button>
+
+      <span ng-show="muffinForm.muffinNumInput.$error.max">
+        Muffin Overload!
+      </span>
+
+      <img src="muffin.png" ng-repeat="i in [] | range: muffins">
+    </form>
+
+*Muffin Button* contains a number input field. Given a number, it dispenses or
+displays a respective number of muffins when pressing the muffin button. We use
+form states to disable the muffin button on invalid and non-number inputs, and
+we also use it to display a specific error message in the case that too many
+muffins are requested.
+
+We disabled the button with the ```ng-disabled``` directive when our
+HTML5 number input field is invalid. We give the input field the name
+```muffinNumInput```. That name can then be referenced from the
+```muffinForm``` object in the scope as ```muffinForm.muffinNumInput```. Our
+number field dictates whether the form is invalid. If the input is not a
+number, is under the min, or over the max,
+```muffinForm.muffinNumInput.$invalid``` will be switched on.
+
+However, ```$invalid``` is general catch-all flag. If we want make use of more
+detailed form states, we can make use of the ```$error``` attribute to see
+specific error flags. In the example, we display an error message with the
+```ng-show``` directive when the number input field contains too large of a
+number. In that case, the ```max``` flag will be set and can be referenced by
+```muffinForm.muffinNumInput.$error.max```.
+
+*Result of Muffin Button*
+
+![Muffin Button](/img/muffinbutton.png)
 
 ### Styling the Form Based on Form State
 
