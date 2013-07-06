@@ -11,14 +11,23 @@
     #muffinNum.ng-invalid ~ .form-actions button {
         background: silver;
     }
+    input.error {
+        border-color: red;
+    }
+    input.valid {
+        border-color: green;
+    }
   </style>
-  <body ng-init="muffinNum = 0;">
+  <body>
     <h1>Muffin Button<h1>
 
     <form name="muffinForm" ng-submit="muffins = muffinNum">
       <label for="muffinNum">How many muffins may you mind?</label>
-      <input id="muffinNum" type="number" name="muffinNumInput"
-             ng-model="muffinNum" min="1" max="255">
+      <input id="muffinNum" type="number" name="muffinNumInput"`
+             ng-model="muffinNum" min="1" max="255"
+             ng-class="{'error': !muffinForm.$pristine && muffinForm.muffinNumInput.$invalid,
+                        'valid': !muffinForm.$pristine && !muffinForm.muffinNumInput.$invalid}"
+             englishMuffins>
 
       <div class="form-actions">
         <button class="btn-large btn-primary"

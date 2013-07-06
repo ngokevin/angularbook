@@ -105,6 +105,39 @@ number. In that case, the ```max``` flag will be set and can be referenced by
 
 ### Styling the Form Based on Form State
 
+We can style elements differently based on form states. It is nothing new, we
+simply use form states in conjunction with ```ng-class```. With that, we can
+give the number input element a red error border when the input is invalid and
+green when valid.
+
+As a side thriller, we use ```$pristine``` to not apply these classes when the
+form has not been touched. The border color would then initially default to
+gray.
+
+*examples/muffinbutton/index.html*
+
+    ::html
+    <input id="muffinNum" type="number" name="muffinNumInput"
+           ng-model="muffinNum" min="1" max="255"
+           ng-class="{'error': !muffinForm.$pristine && muffinForm.muffinNumInput.$invalid,
+                      'valid': !muffinForm.$pristine && !muffinForm.muffinNumInput.$invalid}">
+
+*Result of Muffin Button, with Styling*
+
+![Muffin Button, with Styling](/img/muffinbutton2.png)
+
 ## Custom Form Validation
+
+To apply our own validators, we define a directive that adds a custom
+validation function to the controller. The validation would then occur on both
+model-to-view and view-to-model updates. Our defined directive gets a hold of
+the ```ngModelController``` by ```require```ing it as a dependency and
+specifying it as a parameter in its ```link``` function.
+
+### Example
+
+In *Muffin Button*, we will extend our previous example to define a custom
+validator that allows us to input numbers in English (e.g. "one", "three"),
+up to ten. Therefore, English muffins.
 
 ## Custom Form Controls
